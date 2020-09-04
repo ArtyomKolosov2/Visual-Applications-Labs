@@ -21,7 +21,11 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <CheckBox Content="MaxAbs"  Margin="13, 3, 0, 0" Grid.Row="0" Grid.Column="1" Checked="CheckBox_Checked" Click="CheckBox_Click">
+        <CheckBox Content="MaxAbs"  
+                  Margin="13, 3, 0, 0" 
+                  Grid.Row="0" 
+                  Grid.Column="1" 
+                  Click="CheckBox_Click">
         </CheckBox>
         <GroupBox 
             Header="U(x)" 

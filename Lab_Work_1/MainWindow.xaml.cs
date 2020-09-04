@@ -75,8 +75,8 @@ namespace Lab_Work_1
         
         private double FindMax(params double[] nums)
         {
-            double max = nums[0];
-            double num = 0;
+            double max = nums[0],
+                   num;
             for (int i = 0; i < nums.Length; i++)
             {
                 num = nums[i];
@@ -120,15 +120,13 @@ namespace Lab_Work_1
             object newMathFunction = ((RadioButton)sender).DataContext;
             if (newMathFunction is RadioButtonViewModel radioButton)
             {
-                UserChoiceMathFunction = radioButton?.MathFunction;
+                if (radioButton == null)
+                {
+                    throw new NullReferenceException("Error: RadioButtonViewModel doesn't have math function!");
+                }
+                UserChoiceMathFunction = radioButton.MathFunction;
             }
         }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            ;
-        }
-
         private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
             CheckBoxState = ((CheckBox)sender).IsChecked.Value;
