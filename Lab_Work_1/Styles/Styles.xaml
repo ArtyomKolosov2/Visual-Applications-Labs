@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Lab_Work_1.Styles">
-    <SolidColorBrush x:Key="MainColorTheme" Color="CornflowerBlue"/>
+    <SolidColorBrush x:Key="MainColorTheme" Color="Blue"/>
     <Style x:Key="MainFontStyle">
         <Setter Property="Control.FontSize" Value="15"/>
         <Setter Property="Control.FontFamily" Value="Arial"/>

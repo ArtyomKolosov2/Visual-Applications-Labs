@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Background="#FFE8F1F3"
-        Title="Lab Work №1 ст.гр 10701219 Колосов А.А." Height="450" Width="400">
+        Background="#FFDADADA"
+        Title="Lab Work №1 ст.гр 10701219 Колосов А.А." Height="450" Width="400" Loaded="Window_Loaded">
     <Grid Style="{StaticResource MainFontStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>

@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Lab_Work_1
 {
@@ -27,30 +15,56 @@ namespace Lab_Work_1
 
         private void ExecuteButton_Click(object sender, RoutedEventArgs e)
         {
+            string text_x = GetX_Input.Text;
+            string text_y = GetY_Input.Text;
+            string text_z = GetZ_Input.Text;
             bool Is_Succes = true;
-            if (!double.TryParse(GetX_Input.Text, out double x))
+            if (!double.TryParse(text_x, out double x))
             {
                 Is_Succes = false;
+                text_x = "Invalid data!";
             }
-            if (!double.TryParse(GetY_Input.Text, out double y))
+            if (!double.TryParse(text_y, out double y))
             {
                 Is_Succes = false;
+                text_y = "Invalid data!";
             }
-            if (!double.TryParse(GetZ_Input.Text, out double z))
+            if (!double.TryParse(text_z, out double z))
             {
                 Is_Succes = false;
+                text_z = "Invalid data!";
             }
+            ResultTextBox.Clear();
+            string resultString =
+               "Лаб. раб. №1 Ст.Гр. 10701219 Колосов А.А\n" +
+               $"x = {text_x}\n" +
+               $"y = {text_y}\n" +
+               $"z = {text_z}\n";
             if (Is_Succes)
             {
-                ResultTextBox.Clear();
-                ResultTextBox.Text += $"a = {CalculateOperation(x, y, z)}";
+                resultString += $"b = {CalculateOperation(x, y, z)}\n";
             }
-
+            else
+            {
+                resultString += $"b = NaN\n";
+            }
+            ResultTextBox.Text += resultString;
         }
         
         private double CalculateOperation(double x, double y, double z)
         {
-            return Math.Pow(2, -x) * Math.Sqrt(x + Math.Pow(Math.Abs(y), (double)1 / 4)) * Math.Pow(Math.E, (x - 1d / Math.Sin(z)) / 3d);
+            return Math.Pow(y, Math.Pow(x, (double)1 / 3)) +
+                Math.Pow(Math.Cos(y), 3) *
+                (Math.Abs(x - y) * (1d + (Math.Pow(Math.Sin(z), 2)) /
+                (Math.Sqrt(x + y))) / (Math.Pow(Math.E, x - y) + (x / 2d)));
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ResultTextBox.Text += "Лаб. раб. №1 Ст.Гр. 10701219 Колосов А.А\n";
+            GetX_Input.Text = "0";
+            GetY_Input.Text = "0";
+            GetZ_Input.Text = "0";
         }
     }
 }
