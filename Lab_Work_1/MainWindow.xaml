@@ -8,6 +8,7 @@
         Title="Lab Work №1 ст.гр 10701219 Колосов А.А." Height="450" Width="400" Loaded="Window_Loaded">
     <Grid Style="{StaticResource MainFontStyle}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
@@ -20,35 +21,51 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0"
-               Content="Введите значение X :" 
-               Margin="0,0,10,0" 
-               HorizontalAlignment="Right" 
-               VerticalAlignment="Center"/>
-        <TextBox x:Name="GetX_Input" Grid.Row="0" Grid.Column="1" 
-                 Margin="10" 
-                 MaxHeight="30" />
+        <CheckBox Content="MaxAbs"  Margin="13, 3, 0, 0" Grid.Row="0" Grid.Column="1" Checked="CheckBox_Checked" Click="CheckBox_Click">
+        </CheckBox>
+        <GroupBox 
+            Header="U(x)" 
+            Margin="5, 0, 5, 10" 
+            Grid.Column="1" 
+            Grid.Row="1" 
+            Grid.RowSpan ="3">
+            <ListView x:Name="ListViewRadio">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton Checked="RadioButton_Checked" Margin="3"  Content="{Binding Path=GetContentText}" GroupName="{Binding Path=GetGroupName}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </GroupBox>
         <Label Grid.Row="1" Grid.Column="0"
-               Content="Введите значение Y :" 
+               Content="X:" 
                Margin="0,0,10,0" 
-               HorizontalAlignment="Right" 
+               HorizontalAlignment="Left" 
                VerticalAlignment="Center"/>
-        <TextBox Grid.Row="1" x:Name="GetY_Input" Grid.Column="1" 
-                 Margin="10" 
+        <TextBox x:Name="GetX_Input" Grid.Row="1" Grid.Column="0" 
+                 Margin="25, 10, 10, 10" 
+                 MaxHeight="30" />
+        <Label Grid.Row="3" Grid.Column="0"
+               Content="Y:" 
+               Margin="0,0,10,0" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" x:Name="GetY_Input" Grid.Column="0" 
+                 Margin="25, 10, 10, 10" 
                  MaxHeight="30" />
         <Label Grid.Row="2" Grid.Column="0"
-               Content="Введите значение Z :" 
+               Content="Z:" 
                Margin="0,0,10,0" 
-               HorizontalAlignment="Right" 
+               HorizontalAlignment="Left" 
                VerticalAlignment="Center"/>
-        <TextBox Grid.Row="2" x:Name="GetZ_Input" Grid.Column="1" 
-                 Margin="10" 
+        <TextBox Grid.Row="3" x:Name="GetZ_Input" Grid.Column="0" 
+                 Margin="25, 10, 10, 10" 
                  MaxHeight="30" />
-        <Label Grid.Row="3" Grid.Column="0" 
+        <Label Grid.Row="4" Grid.Column="0" 
                Grid.ColumnSpan="2" 
                HorizontalAlignment="Left" 
                Content="Результат выполнения программы: "/>
-        <TextBox x:Name="ResultTextBox" Style="{StaticResource RoundTextBox}" Grid.Row="4" Grid.Column="0" 
+        <TextBox x:Name="ResultTextBox" Style="{StaticResource RoundTextBox}" Grid.Row="5" Grid.Column="0" 
                    Grid.ColumnSpan="2" Grid.RowSpan="2"
                    Margin="10, 5, 10, 5" IsReadOnly="True"
                    BorderBrush="LightGray"
@@ -56,7 +73,7 @@
         </TextBox>
         <Button Style="{StaticResource RoundCorner}"
                 Grid.Column="0" 
-                Grid.Row="6" 
+                Grid.Row="7" 
                 Grid.ColumnSpan="2" 
                 MaxHeight="50" 
                 MaxWidth="150" 

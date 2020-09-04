@@ -1,5 +1,11 @@
-﻿using System;
+﻿using Lab_Work_1_2.modules;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using static Lab_Work_1_2.modules.RadioButtonViewModel;
 
 namespace Lab_Work_1
 {
@@ -8,11 +14,14 @@ namespace Lab_Work_1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MathFunctionHandler UserChoiceMathFunction { get; set; }
+
+        public bool CheckBoxState { get; set; }
+        public ObservableCollection<RadioButtonViewModel> RadioButtons { get; private set; }
         public MainWindow()
         {
             InitializeComponent();
         }
-
         private void ExecuteButton_Click(object sender, RoutedEventArgs e)
         {
             string text_x = GetX_Input.Text;
@@ -40,31 +49,89 @@ namespace Lab_Work_1
                $"x = {text_x}\n" +
                $"y = {text_y}\n" +
                $"z = {text_z}\n";
-            if (Is_Succes)
+            double? mathFunctionResultNullable = UserChoiceMathFunction?.Invoke(x);
+            if (Is_Succes && mathFunctionResultNullable != null)
             {
-                resultString += $"b = {CalculateOperation(x, y, z)}\n";
+                double mathFuncResult = mathFunctionResultNullable.Value;
+                resultString += $"U(x) = {mathFuncResult}\n";
+                resultString += $"m = {CalculateOperation(mathFuncResult, y, z)}\n";
+                resultString += $"Max{(CheckBoxState?"Abs":string.Empty)} = {FindMax(mathFuncResult, y, z)}\n";   
             }
             else
             {
-                resultString += $"b = NaN\n";
+                resultString += "U(x) = NaN\n";
+                if (mathFunctionResultNullable == null)
+                {
+                    resultString += "m = Error: Math funtion isn't choosen!\n";
+                }
+                else
+                {
+                    resultString += $"m = NaN\n";
+                }
+                resultString += "Max = NaN\n";
             }
             ResultTextBox.Text += resultString;
         }
         
+        private double FindMax(params double[] nums)
+        {
+            double max = nums[0];
+            double num = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                num = nums[i];
+                if (CheckBoxState)
+                {
+                    num = Math.Abs(num);
+                }
+                if (num > max)
+                {
+                    max = num;
+                }
+            }
+            return max;
+        }
         private double CalculateOperation(double x, double y, double z)
         {
-            return Math.Pow(y, Math.Pow(x, (double)1 / 3)) +
-                Math.Pow(Math.Cos(y), 3) *
-                (Math.Abs(x - y) * (1d + (Math.Pow(Math.Sin(z), 2)) /
-                (Math.Sqrt(x + y))) / (Math.Pow(Math.E, x - y) + (x / 2d)));
+            return (FindMax(x,y,z) / 
+                Math.Min(x, y)) + 5d;
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            RadioButtons = new ObservableCollection<RadioButtonViewModel>()
+            {
+                new RadioButtonViewModel
+                {
+                    GetContentText="sh(x)", 
+                    MathFunction=(double num) => (Math.Pow(Math.E, num) - Math.Pow(Math.E, -num)) / 2d 
+                },
+                new RadioButtonViewModel{GetContentText="x^2", MathFunction=(double num) => Math.Pow(num, 2) },
+                new RadioButtonViewModel{GetContentText="e^x", MathFunction=(double num) => Math.Pow(Math.E, num)}
+            };
+            ListViewRadio.ItemsSource = RadioButtons;
             ResultTextBox.Text += "Лаб. раб. №1 Ст.Гр. 10701219 Колосов А.А\n";
             GetX_Input.Text = "0";
             GetY_Input.Text = "0";
             GetZ_Input.Text = "0";
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            object newMathFunction = ((RadioButton)sender).DataContext;
+            if (newMathFunction is RadioButtonViewModel radioButton)
+            {
+                UserChoiceMathFunction = radioButton?.MathFunction;
+            }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            ;
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            CheckBoxState = ((CheckBox)sender).IsChecked.Value;
         }
     }
 }
