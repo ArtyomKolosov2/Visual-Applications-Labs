@@ -338,3 +338,10 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Lab_Work_2/Lab_Work_2.csproj
+/Lab_Work_2/App.xaml
+/Lab_Work_2/App.xaml.cs
+/Lab_Work_2/AssemblyInfo.cs
+/Lab_Work_2/MainWindow.xaml
+/Lab_Work_2/MainWindow.xaml.cs
+/Lab_Work_2/Styles/Styles.xaml
