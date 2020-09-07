@@ -59,7 +59,7 @@
                Grid.Column="1" 
                FontSize="14" 
                FontFamily="Calibri"/>
-        <TextBox  x:Name="GetH_Input" Style="{StaticResource RoundTextBox}" 
+        <TextBox  IsReadOnly="True" x:Name="GetH_Input" Style="{StaticResource RoundTextBox}" 
                  MaxHeight="30" 
                  Margin="25, 0, 10, 0" 
                  Grid.Row="1" 
