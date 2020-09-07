@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using static Lab_Work_1_2.modules.RadioButtonViewModel;
+using static System.Math;
 
 namespace Lab_Work_1
 {
@@ -45,7 +46,7 @@ namespace Lab_Work_1
             }
             ResultTextBox.Clear();
             string resultString =
-               "Лаб. раб. №1 Ст.Гр. 10701219 Колосов А.А\n" +
+               "Лаб. раб. №2 Ст.Гр. 10701219 Колосов А.А\n" +
                $"x = {text_x}\n" +
                $"y = {text_y}\n" +
                $"z = {text_z}\n";
@@ -82,7 +83,7 @@ namespace Lab_Work_1
                 num = nums[i];
                 if (CheckBoxState)
                 {
-                    num = Math.Abs(num);
+                    num = Abs(num);
                 }
                 if (num > max)
                 {
@@ -94,7 +95,7 @@ namespace Lab_Work_1
         private double CalculateOperation(double x, double y, double z)
         {
             return (FindMax(x,y,z) / 
-                Math.Min(x, y)) + 5d;
+                Min(x, y)) + 5d;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -103,13 +104,13 @@ namespace Lab_Work_1
                 new RadioButtonViewModel
                 {
                     GetContentText="sh(x)", 
-                    MathFunction=(double num) => (Math.Pow(Math.E, num) - Math.Pow(Math.E, -num)) / 2d 
+                    MathFunction=(double num) => (Pow(E, num) - Pow(E, -num)) / 2d 
                 },
-                new RadioButtonViewModel{GetContentText="x^2", MathFunction=(double num) => Math.Pow(num, 2) },
-                new RadioButtonViewModel{GetContentText="e^x", MathFunction=(double num) => Math.Pow(Math.E, num)}
+                new RadioButtonViewModel{GetContentText="x^2", MathFunction=(double num) => Pow(num, 2) },
+                new RadioButtonViewModel{GetContentText="e^x", MathFunction=(double num) => Pow(E, num)}
             };
             ListViewRadio.ItemsSource = RadioButtons;
-            ResultTextBox.Text += "Лаб. раб. №1 Ст.Гр. 10701219 Колосов А.А\n";
+            ResultTextBox.Text += "Лаб. раб. №2 Ст.Гр. 10701219 Колосов А.А\n";
             GetX_Input.Text = "0";
             GetY_Input.Text = "0";
             GetZ_Input.Text = "0";

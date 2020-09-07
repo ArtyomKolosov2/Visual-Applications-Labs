@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using static System.Math;
 
 namespace Lab_Work_3
 {
@@ -48,10 +37,11 @@ namespace Lab_Work_3
             }
             ResultTextBox.Clear();
             string resultString =
-               "Лаб. раб. №1 Ст.Гр. 10701219 Колосов А.А\n" +
+               "Лаб. раб. №3 Ст.Гр. 10701219 Колосов А.А\n" +
                $"x1 = {text_x1}\n" +
                $"x2 = {text_x2}\n" +
                $"N = {text_n}\n";
+            ResultTextBox.Text+= resultString;
             if (Is_Succes)
             {
                 StartCount(x1, x2, n);
@@ -60,14 +50,15 @@ namespace Lab_Work_3
         private void StartCount(double xn, double xk,  int n)
         {
             double h = (xk - xn) / n;
+            GetH_Input.Text = Round(h, 2).ToString();
             StringBuilder result_str = new StringBuilder();
             for (int i = 0; i < n; i++, xn+=h)
             {
-                xn = Math.Round(xn, 4);
+                xn = Round(xn, 4);
                 result_str.Append
                 (
-                    $"{(i+1).ToString()}. xn = {xn}, S(x) = {Math.Round(GetSXFunctionResult(xn), 4)} \t " +
-                    $"Y(x) = {Math.Round(GetYXFunctionResult(xn), 4)}\n"
+                    $"{(i+1).ToString()}. xn = {xn}, S(x) = {Round(GetSXFunctionResult(xn), 4)} \t " +
+                    $"Y(x) = {Round(GetYXFunctionResult(xn), 4)}\n"
                 );
             }
             ResultTextBox.Text += result_str.ToString();
@@ -81,7 +72,7 @@ namespace Lab_Work_3
             int k = 0;
             while (k < 500)
             {
-                double T = -(Math.Pow(x, 2) * (k + 1)) / ((2 * Math.Pow(k, 2) + 1) * (2 * k + 1));
+                double T = -(Pow(x, 2) * (k + 1)) / ((2 * Pow(k, 2) + 1) * (2 * k + 1));
                 f *= T;
                 sum += f;
                 k++;
@@ -91,17 +82,7 @@ namespace Lab_Work_3
 
         private double GetYXFunctionResult(double x)
         {
-            return (1 - ((x * x) / 2d)) * Math.Cos(x) - (x / 2d) * Math.Sin(x);
-        }
-
-        private int Factorial(int number)
-        {
-            int result = 1;
-            for (int i = 1; i <= number; i++)
-            {
-                result *= i;
-            }
-            return result;
+            return (1 - ((x * x) / 2d)) * Cos(x) - (x / 2d) * Sin(x);
         }
     }
 }

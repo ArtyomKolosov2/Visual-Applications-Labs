@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using static System.Math;
 
 namespace Lab_Work_1
 {
@@ -53,10 +54,10 @@ namespace Lab_Work_1
         
         private double CalculateOperation(double x, double y, double z)
         {
-            return Math.Pow(y, Math.Pow(x, (double)1 / 3)) +
-                Math.Pow(Math.Cos(y), 3) *
-                (Math.Abs(x - y) * (1d + (Math.Pow(Math.Sin(z), 2)) /
-                (Math.Sqrt(x + y))) / (Math.Pow(Math.E, x - y) + (x / 2d)));
+            return Pow(y, Pow(x, (double)1 / 3)) +
+                Pow(Cos(y), 3) *
+                (Abs(x - y) * (1d + (Pow(Sin(z), 2)) /
+                (Sqrt(x + y))) / (Pow(Math.E, x - y) + (x / 2d)));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
