@@ -104,10 +104,11 @@ namespace Lab_Work_1
                 new RadioButtonViewModel
                 {
                     GetContentText="sh(x)", 
-                    MathFunction=(double num) => (Pow(E, num) - Pow(E, -num)) / 2d 
+                    MathFunction= (double num) => (Pow(E, num) - Pow(E, -num)) / 2d 
                 },
                 new RadioButtonViewModel{GetContentText="x^2", MathFunction=(double num) => Pow(num, 2) },
-                new RadioButtonViewModel{GetContentText="e^x", MathFunction=(double num) => Pow(E, num)}
+                new RadioButtonViewModel{GetContentText="x^3", MathFunction=(double num) => Pow(num, 3) },
+                new RadioButtonViewModel{GetContentText="e^x", MathFunction=(double num) => Pow(E, num) }
             };
             ListViewRadio.ItemsSource = RadioButtons;
             ResultTextBox.Text += "Лаб. раб. №2 Ст.Гр. 10701219 Колосов А.А\n";

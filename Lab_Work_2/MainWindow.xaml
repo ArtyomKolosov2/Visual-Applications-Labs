@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Background="#FFDADADA"
-        Title="Lab Work №2 ст.гр 10701219 Колосов А.А." Height="450" Width="400" Loaded="Window_Loaded">
+        Title="Lab Work №2 ст.гр 10701219 Колосов А.А." Height="600" Width="500" Loaded="Window_Loaded">
     <Grid Style="{StaticResource MainFontStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>

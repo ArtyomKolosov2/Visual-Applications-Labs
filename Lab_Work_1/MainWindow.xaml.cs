@@ -14,7 +14,7 @@ namespace Lab_Work_1
             InitializeComponent();
         }
 
-        private void ExecuteButton_Click(object sender, RoutedEventArgs e)
+        private void StartExecution()
         {
             string text_x = GetX_Input.Text;
             string text_y = GetY_Input.Text;
@@ -51,6 +51,11 @@ namespace Lab_Work_1
             }
             ResultTextBox.Text += resultString;
         }
+
+        private void ExecuteButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartExecution();
+        }
         
         private double CalculateOperation(double x, double y, double z)
         {
@@ -63,9 +68,15 @@ namespace Lab_Work_1
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ResultTextBox.Text += "Лаб. раб. №1 Ст.Гр. 10701219 Колосов А.А\n";
-            GetX_Input.Text = "0";
-            GetY_Input.Text = "0";
-            GetZ_Input.Text = "0";
+            GetX_Input.Text = "5";
+            GetY_Input.Text = "76";
+            GetZ_Input.Text = "345";
+            StartExecution();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

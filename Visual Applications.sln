@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab_Work_2", "Lab_Work_2\La
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab_Work_1", "Lab_Work_1\Lab_Work_1.csproj", "{D75977A1-617F-4D87-A850-6A72F45DC512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab_Work_4", "Lab_Work_4\Lab_Work_4.csproj", "{797326AC-63B4-4499-9CEA-EE1CA8AD7321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab_Work_4", "Lab_Work_4\Lab_Work_4.csproj", "{797326AC-63B4-4499-9CEA-EE1CA8AD7321}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{F3B322C2-0DF9-402F-867A-9444EFD21262}"
 EndProject

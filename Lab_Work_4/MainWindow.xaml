@@ -4,15 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_Work_4"
-        xmlns:MS1="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:MS="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <WindowsFormsHost x:Name="WindowsFormsH" HorizontalAlignment="Left" Height="403" Margin="10,10,0,0" VerticalAlignment="Top" Width="769">
-            <WindowsFormsHost.Child >
-                <MS1:DataGridView/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="80"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition MaxHeight="60"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Размерность N:" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Style="{DynamicResource RoundTextBox}" x:Name="SizeTextBoxN" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right"  MinWidth="80" MaxWidth="100" MaxHeight="25" Margin="5,5,5,5"/>
+        </StackPanel>
+        <Button Style="{DynamicResource RoundCorner}" Margin="20" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Content="Изменить размерность массива" Click="ResizeButton_Click"/>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+            <Label Content="Размерность M:" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Style="{DynamicResource RoundTextBox}" x:Name="SizeTextBoxM" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" MinWidth="80" MaxWidth="100" MaxHeight="25" Margin="5,5,5,5"/>
+        </StackPanel>
+        <WindowsFormsHost Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="10">
+            <WindowsFormsHost.Child>
+                <MS:DataGridView x:Name="MainDataGridView" CellEndEdit="MainDataGridView_CellEndEdit"/>
             </WindowsFormsHost.Child>
         </WindowsFormsHost>
-
+        <Button Style="{DynamicResource RoundCorner}" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="4" Margin="15" Content="Вычислить"/>
     </Grid>
 </Window>

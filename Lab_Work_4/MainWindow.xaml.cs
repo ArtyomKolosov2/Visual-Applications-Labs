@@ -22,10 +22,50 @@ namespace Lab_Work_4
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int[,] _mainDoubleArray;
         public MainWindow()
         {
             InitializeComponent();
-            WindowsFormsH.Child = new DataGridView();
+        }
+
+        private void MainDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ResizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartResize();
+        }
+       
+        private void StartResize()
+        {
+            string text_m = SizeTextBoxM.Text;
+            string text_n = SizeTextBoxN.Text;
+            if (!int.TryParse(text_m, out int m))
+            {
+                return;
+            }
+            if (!int.TryParse(text_n, out int n))
+            {
+                return;
+            }
+            _mainDoubleArray = new int[m, n];
+            MainDataGridView.RowCount = m;
+            MainDataGridView.ColumnCount = n;
+            for (int i = 0; i < n; i++)
+            {
+                MainDataGridView.Columns[i].HeaderText = $"i = {i.ToString()}";
+            }
+            for (int i = 0; i < m; i++)
+            {
+                MainDataGridView.Rows[i].HeaderCell.Value = $"j = {i.ToString()}";
+            }
         }
     }
 }
