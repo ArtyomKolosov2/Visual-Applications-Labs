@@ -29,11 +29,13 @@
             <Label Content="Размерность M:" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <TextBox Style="{DynamicResource RoundTextBox}" x:Name="SizeTextBoxM" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" MinWidth="80" MaxWidth="100" MaxHeight="25" Margin="5,5,5,5"/>
         </StackPanel>
-        <WindowsFormsHost Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="10">
+        <WindowsFormsHost Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="10">
             <WindowsFormsHost.Child>
-                <MS:DataGridView x:Name="MainDataGridView" CellEndEdit="MainDataGridView_CellEndEdit"/>
+                <MS:DataGridView x:Name="MainDataGridView" CellEndEdit="MainDataGridView_CellEndEdit">
+                </MS:DataGridView>
             </WindowsFormsHost.Child>
         </WindowsFormsHost>
+        <TextBox Style="{DynamicResource RoundTextBox}" x:Name="ResultTextBox" Grid.Row="1" Grid.RowSpan="2" Margin="5,0,10,0" IsReadOnly="True" Grid.Column="3"/>
         <Button Style="{DynamicResource RoundCorner}" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="4" Margin="15" Content="Вычислить"/>
     </Grid>
 </Window>
