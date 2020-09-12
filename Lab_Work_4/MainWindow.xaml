@@ -33,9 +33,9 @@
             <WindowsFormsHost.Child>
                 <MS:DataGridView x:Name="MainDataGridView" CellEndEdit="MainDataGridView_CellEndEdit">
                 </MS:DataGridView>
-            </WindowsFormsHost.Child>
+            </WindowsFormsHost.Child> 
         </WindowsFormsHost>
         <TextBox Style="{DynamicResource RoundTextBox}" x:Name="ResultTextBox" Grid.Row="1" Grid.RowSpan="2" Margin="5,0,10,0" IsReadOnly="True" Grid.Column="3"/>
-        <Button Style="{DynamicResource RoundCorner}" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="4" Margin="15" Content="Вычислить"/>
+        <Button Style="{DynamicResource RoundCorner}" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="4" Margin="15" Content="Вычислить" Click="Execute_Button"/>
     </Grid>
 </Window>
