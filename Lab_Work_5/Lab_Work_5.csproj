@@ -16,4 +16,10 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>
