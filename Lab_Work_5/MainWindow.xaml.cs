@@ -27,6 +27,11 @@ namespace Lab_Work_5
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            StringComboBox.ItemsSource = _strings;
+        }
+
         private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -35,9 +40,21 @@ namespace Lab_Work_5
         private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             string text = StringComboBox.Text;
-            StringComboBox.Text = string.Empty;
-            
+            if (text.Length > 0)
+            {
+                StringComboBox.Text = string.Empty;
+                _strings.Add(text);
+            }
         }
-    }
-    
+
+        private void ExitCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+    }  
 }
