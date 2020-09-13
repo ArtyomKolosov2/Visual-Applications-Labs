@@ -20,7 +20,18 @@
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <ComboBox x:Name="StringComboBox" Grid.Column="0" Grid.Row="0" Margin="5" MaxHeight="40"  IsEditable="True" IsReadOnly="False">
+        <ComboBox x:Name="StringComboBox" 
+                  Grid.Column="0" 
+                  Grid.Row="0" 
+                  Margin="5" 
+                  MaxHeight="40"  
+                  IsEditable="True" 
+                  IsReadOnly="False" SelectionChanged="StringComboBox_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
         <Button Margin="5" Grid.Column="1" Grid.Row="0" Content="Add" Command="local:CustomCommands.Save"/>
         <Label Content="Results:" Grid.Row="1"/>
@@ -28,7 +39,7 @@
         <Button Grid.ColumnSpan="2" Command="local:CustomCommands.Exit" Grid.Row="2" Width="100" Margin="50,10,50,10">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                    <Image Margin="0,0,5,0" MaxHeight="20" MaxWidth="20" Source="/Images/exit.png"/>
+                    <Image Margin="0,0,5,0" MaxHeight="20" MaxWidth="20" Source="Images/exit.png"/>
                     <TextBlock VerticalAlignment="Center" Text="Close"/>
                 </StackPanel>
             </Button.Content>

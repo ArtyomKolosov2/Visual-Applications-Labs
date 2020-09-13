@@ -43,7 +43,7 @@ namespace Lab_Work_5
             if (text.Length > 0)
             {
                 StringComboBox.Text = string.Empty;
-                _strings.Add(text);
+                _strings.Add(text.Trim());
             }
         }
 
@@ -55,6 +55,20 @@ namespace Lab_Work_5
         private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void StringComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            ComboBox comboBox = (ComboBox)sender;
+            string item = comboBox?.SelectedItem?.ToString();
+            if (item != null) 
+            {
+                ResultTextBox.Clear();
+                string[] words = item.Split();
+                Array.Sort(words);
+                ResultTextBox.Text = string.Join('\n', words);
+            }
         }
     }  
 }
