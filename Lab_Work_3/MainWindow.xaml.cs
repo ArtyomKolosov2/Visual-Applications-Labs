@@ -72,7 +72,7 @@ namespace Lab_Work_3
             int k = 0;
             while (k < 500)
             {
-                double T = -(Pow(x, 2) * (k + 1)) / ((2 * Pow(k, 2) + 1) * (2 * k + 1));
+                double T = -(Pow(x, 2) *(k + 1)) / ((2 * Pow(k, 2) + 1) * (2 * k + 1));
                 f *= T;
                 sum += f;
                 k++;
