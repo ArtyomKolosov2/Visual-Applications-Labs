@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_Work_3"
         mc:Ignorable="d"
-        Title="Лаб. раб. №3 Ст.Гр. 10701219 Колосов А.А" Height="450" Width="400">
+        Title="Лаб. раб. №3 Ст.Гр. 10701219 Колосов А.А" Height="450" Width="400" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -28,7 +28,7 @@
                  MaxHeight="30"  
                  Margin="25, 0, 10, 0" 
                  Grid.Row="0" 
-                 Grid.Column="0"/>
+                 Grid.Column="0" Text="0.1"/>
 
         <Label  Content="X2:" 
                 VerticalAlignment="Center" 
@@ -40,18 +40,18 @@
                  MaxHeight="30"  
                  Margin="25, 0, 10, 0" 
                  Grid.Row="1" 
-                 Grid.Column="0"/>
+                 Grid.Column="0" Text="1"/>
 
         <Label Content="N:" 
                VerticalAlignment="Center" 
                Grid.Row="0" Grid.Column="1" 
                FontFamily="Calibri" 
                FontSize="14"/>
-        <TextBox  x:Name="GetN_Input" Style="{StaticResource RoundTextBox}" 
+        <TextBox x:Name="GetN_Input" Style="{StaticResource RoundTextBox}" 
                  MaxHeight="30"  
                  Margin="25, 0, 10, 0" 
                  Grid.Row="0" 
-                 Grid.Column="1"/>
+                 Grid.Column="1" Text="10"/>
 
         <TextBox x:Name="ResultTextBox" Style="{StaticResource RoundTextBox}" 
                  Text="Лаб. раб. №3 Ст.Гр. 10701219 Колосов А.А"
@@ -71,5 +71,11 @@
                 Margin="5" 
                 Content="Start"
                 Click="Button_Click"/>
+        <Label Content="M:" 
+               VerticalAlignment="Center" 
+               Grid.Row="1" Grid.Column="1" 
+               FontFamily="Calibri" 
+               FontSize="14"/>
+        <TextBox Style="{StaticResource RoundTextBox}" MaxHeight="30" Margin="25, 0, 10, 0" x:Name="GetM_Input" Grid.Column="1" Text="10" Grid.Row="1"/>
     </Grid>
 </Window>

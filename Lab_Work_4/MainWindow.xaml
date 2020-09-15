@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lab_Work_4"
         xmlns:MS="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Лаб. раб. №4 Ст.Гр. 10701219 Колосов А.А" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

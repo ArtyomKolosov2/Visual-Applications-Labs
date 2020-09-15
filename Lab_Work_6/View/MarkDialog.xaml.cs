@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab_Work_6.Modules;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,6 +18,7 @@ namespace Lab_Work_6.View
     /// </summary>
     public partial class MarkDialog : Window
     {
+        public MarkModel MarkClass { get; set; } = new MarkModel();
         public MarkDialog()
         {
             InitializeComponent();

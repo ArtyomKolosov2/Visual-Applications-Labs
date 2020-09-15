@@ -20,6 +20,7 @@ namespace Lab_Work_3
             string text_x1 = GetX1_Input.Text;
             string text_x2 = GetX2_Input.Text;
             string text_n = GetN_Input.Text;
+            string text_m = GetM_Input.Text;
             bool Is_Succes = true;
             if (!double.TryParse(text_x1, out double x1))
             {
@@ -36,6 +37,11 @@ namespace Lab_Work_3
                 Is_Succes = false;
                 text_n = "Invalid data!";
             }
+            if (!int.TryParse(text_m, out int m))
+            {
+                Is_Succes = false;
+                text_m = "Invalid data!";
+            }
             ResultTextBox.Clear();
             string resultString =
                "Лаб. раб. №3 Ст.Гр. 10701219 Колосов А.А\n" +
@@ -45,37 +51,37 @@ namespace Lab_Work_3
             ResultTextBox.Text+= resultString;
             if (Is_Succes)
             {
-                ResultTextBox.Text += await StartCountAsync(x1, x2, n);
+                ResultTextBox.Text += await StartCountAsync(x1, x2, n, m);
             }
         }
 
-        private async Task<string> StartCountAsync(double xn, double xk, int n)
+        private async Task<string> StartCountAsync(double xn, double xk, int n, int m)
         {
-            return await Task.Run(() => StartCount(xn, xk, n));
+            return await Task.Run(() => StartCount(xn, xk, n, m));
         }
-        private string StartCount(double xn, double xk,  int n)
+        private string StartCount(double xn, double xk,  int n, int m)
         {
-            double h = (xk - xn) / n;
+            double h = (xk - xn) / m;
             StringBuilder result_str = new StringBuilder();
-            for (int i = 0; i < n; i++, xn+=h)
+            for (int i = 1; xn < xk; i++, xn+=h)
             {
                 xn = Round(xn, 4);
                 result_str.Append
                 (
-                    $"{(i+1).ToString()}. xn = {xn}, S(x) = {Round(GetSXFunctionResult(xn), 4)} \t " +
+                    $"{i.ToString()}. xn = {xn}, S(x) = {Round(GetSXFunctionResult(xn, n), 4)}\t" +
                     $"Y(x) = {Round(GetYXFunctionResult(xn), 4)}\n"
                 );
             }
             return result_str.ToString();
         }
 
-        private double GetSXFunctionResult(double x)
+        private double GetSXFunctionResult(double x, int n)
         {
             double Co = 1;
             double f = Co;
             double sum = f;
-            int k = 0;
-            while (k < 500)
+            int k = 1;
+            while (k < n)
             {
                 double T = -(Pow(x, 2) *(k + 1)) / ((2 * Pow(k, 2) + 1) * (2 * k + 1));
                 f *= T;
@@ -88,6 +94,11 @@ namespace Lab_Work_3
         private double GetYXFunctionResult(double x)
         {
             return (1 - ((x * x) / 2d)) * Cos(x) - (x / 2d) * Sin(x);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            GetN_Input.Text = "100";
         }
     }
 }
