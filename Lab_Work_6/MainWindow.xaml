@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_Work_6"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="MainStyle">
+            <Setter Property="Control.FontFamily" Value="Arial" />
+            <Setter Property="Control.FontSize" Value="20"/>
+            <Setter Property="Control.Background" Value="White" />
+            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Margin" Value="10" />
+            <Setter Property="Control.BorderBrush" Value="Green"/>
+            <Setter Property="Control.BorderThickness" Value="8"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Style="{StaticResource MainStyle}" x:Name="DataGridInfo" Margin="10" Grid.ColumnSpan="2" Grid.Column="0" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Fio}" Header="Ф.И.О." Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Path=Addres}" Header="Адрес" Width="auto"/>
+                <DataGridTemplateColumn Header="Оценки" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button VerticalAlignment="Center" Grid.Column="0" Margin="3" Content="Добавить"/>
+                                <ComboBox ItemsSource="{Binding Path=Marks}" Grid.Column="1" Margin="5,0,0,0" x:Name="MarksComboBox">
+                   
+                                </ComboBox>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
