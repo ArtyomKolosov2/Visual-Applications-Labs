@@ -53,18 +53,6 @@
                  Grid.Row="0" 
                  Grid.Column="1"/>
 
-        <Label VerticalAlignment="Center" 
-               Content="H:" 
-               Grid.Row="1" 
-               Grid.Column="1" 
-               FontSize="14" 
-               FontFamily="Calibri"/>
-        <TextBox  IsReadOnly="True" x:Name="GetH_Input" Style="{StaticResource RoundTextBox}" 
-                 MaxHeight="30" 
-                 Margin="25, 0, 10, 0" 
-                 Grid.Row="1" 
-                 Grid.Column="1"/>
-
         <TextBox x:Name="ResultTextBox" Style="{StaticResource RoundTextBox}" 
                  Text="Лаб. раб. №3 Ст.Гр. 10701219 Колосов А.А"
                  Margin="10" 
@@ -83,6 +71,5 @@
                 Margin="5" 
                 Content="Start"
                 Click="Button_Click"/>
-        
     </Grid>
 </Window>

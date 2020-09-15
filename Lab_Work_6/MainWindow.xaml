@@ -14,7 +14,7 @@
             <Setter Property="Control.Foreground" Value="Black" />
             <Setter Property="Control.Margin" Value="10" />
             <Setter Property="Control.BorderBrush" Value="Green"/>
-            <Setter Property="Control.BorderThickness" Value="8"/>
+            <Setter Property="Control.BorderThickness" Value="4"/>
         </Style>
     </Window.Resources>
     
@@ -39,7 +39,7 @@
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Button VerticalAlignment="Center" Grid.Column="0" Margin="3" Content="Добавить"/>
+                                <Button Click="AddMarkButton_Clicked" VerticalAlignment="Center" Grid.Column="0" Margin="3" Content="Добавить"/>
                                 <ComboBox ItemsSource="{Binding Path=Marks}" Grid.Column="1" Margin="5,0,0,0" x:Name="MarksComboBox">
                    
                                 </ComboBox>

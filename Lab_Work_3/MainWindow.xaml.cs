@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using static System.Math;
 
@@ -14,7 +15,7 @@ namespace Lab_Work_3
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             string text_x1 = GetX1_Input.Text;
             string text_x2 = GetX2_Input.Text;
@@ -44,13 +45,17 @@ namespace Lab_Work_3
             ResultTextBox.Text+= resultString;
             if (Is_Succes)
             {
-                StartCount(x1, x2, n);
+                ResultTextBox.Text += await StartCountAsync(x1, x2, n);
             }
         }
-        private void StartCount(double xn, double xk,  int n)
+
+        private async Task<string> StartCountAsync(double xn, double xk, int n)
+        {
+            return await Task.Run(() => StartCount(xn, xk, n));
+        }
+        private string StartCount(double xn, double xk,  int n)
         {
             double h = (xk - xn) / n;
-            GetH_Input.Text = Round(h, 2).ToString();
             StringBuilder result_str = new StringBuilder();
             for (int i = 0; i < n; i++, xn+=h)
             {
@@ -61,7 +66,7 @@ namespace Lab_Work_3
                     $"Y(x) = {Round(GetYXFunctionResult(xn), 4)}\n"
                 );
             }
-            ResultTextBox.Text += result_str.ToString();
+            return result_str.ToString();
         }
 
         private double GetSXFunctionResult(double x)

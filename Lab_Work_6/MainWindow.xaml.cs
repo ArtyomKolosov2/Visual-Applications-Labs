@@ -51,7 +51,10 @@ namespace Lab_Work_6
                 DataGridInfo.ItemsSource = _contacts;
             }
         }
-
+        private void AddMarkButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            Contact data = (Contact)((Button)sender).DataContext;
+        }
         private void Collection_Changed(object sender, NotifyCollectionChangedEventArgs e)
         {
             try
