@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Lab_Work_6.Modules
 {
-    public class MarkModel : INotifyPropertyChanged
+    public class MarkModel : INotifyPropertyChanged, IDataErrorInfo
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -52,5 +52,32 @@ namespace Lab_Work_6.Modules
             }
         }
 
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = string.Empty;
+                switch (columnName)
+                {
+                    case "Mark":
+                        if ((Mark < 0) || (Mark > 10))
+                        {
+                            error = "Оценка должна быть больше 0 и меньше 10";
+                        }
+                        break;
+                    case "SubjectName":
+                        if (SubjectName.Length < 0)
+                        {
+                            error = "Название предмета должно быть заполнено!";
+                        }
+                        break;
+                }
+                return error;
+            }
+        }
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

@@ -88,7 +88,7 @@ namespace MyContacts.Modules
     {
         private string _fio = null;
         private string _addres = null;
-        public ObservableCollectionModifed<MarkModel> Marks { get; set; }
+        public ObservableCollectionModifed<MarkModel> Marks { get;}
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void ContactChanged([CallerMemberName]string name = "")

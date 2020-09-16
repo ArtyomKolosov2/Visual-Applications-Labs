@@ -19,16 +19,27 @@ namespace Lab_Work_6.View
     public partial class MarkDialog : Window
     {
         public MarkModel MarkClass { get; set; } = new MarkModel();
+        private bool IsAnyMarkErrors { get; set; }
         public MarkDialog()
         {
             InitializeComponent();
+            DataContext = MarkClass;
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            MarkClass.Mark = Convert.ToInt32(MarkBox.Text);
-            MarkClass.SubjectName = SubjectNameBox.Text;
-            Close();
+            if (IsAnyMarkErrors == false)
+            {
+                MarkClass.Mark = Convert.ToInt32(MarkBox.Text);
+                MarkClass.SubjectName = SubjectNameBox.Text;
+                DialogResult = true;
+                Close();
+            }
+        }
+
+        private void MarkBox_Error(object sender, ValidationErrorEventArgs e)
+        {
+            IsAnyMarkErrors = e.Action == ValidationErrorEventAction.Added ? true : false;
         }
     }
 }

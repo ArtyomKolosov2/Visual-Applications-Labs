@@ -1,40 +1,39 @@
-﻿using System.IO;
-using System.Text.Json;
+﻿using Lab_Work_6.Modules;
+using Newtonsoft.Json;
+using System.ComponentModel;
+using System.IO;
+
 
 namespace MyContacts.Modules
 {
     public class JsonIOservice
-    { 
+    {
+        private JsonSerializer serializer = new JsonSerializer();
         public string JsonPath { get; set; } = Directory.GetCurrentDirectory() + "/ContactsInfo.json";
-        public void WriteToJsonFile(ObservableCollectionModifed<Contact> contacts)
+        public void WriteToJsonFile<T>(ObservableCollectionModifed<T> contacts) where T : INotifyPropertyChanged
         {
             using (StreamWriter writer = File.CreateText(JsonPath))
             {
-                string jsonString = JsonSerializer.Serialize(contacts, contacts.GetType());
-                writer.Write(jsonString);
+                serializer.Serialize(writer, contacts);
             }
         }
 
         public ObservableCollectionModifed<Contact> LoadContacts()
         {
             var IsExist = File.Exists(JsonPath);
-            ObservableCollectionModifed<Contact> readContacts = new ObservableCollectionModifed<Contact>();
+            ObservableCollectionModifed<Contact> readContacts = null;
             if (IsExist)
             {
                 using (StreamReader reader = File.OpenText(JsonPath))
                 {
-                    string jsonString = reader.ReadToEnd();
-                    if (jsonString.Length > 0) 
-                    {
-                        readContacts = (ObservableCollectionModifed<Contact>)JsonSerializer.Deserialize(jsonString, readContacts.GetType());
-                    }
+                    readContacts = (ObservableCollectionModifed<Contact>)serializer.Deserialize(reader, typeof(ObservableCollectionModifed<Contact>));
                 }
             }
             else
             {
                 File.CreateText(JsonPath);
             }
-            return readContacts;
+            return readContacts ?? new ObservableCollectionModifed<Contact>();
         }
     }
 }
