@@ -17,11 +17,10 @@
             <Setter Property="Control.BorderThickness" Value="4"/>
         </Style>
     </Window.Resources>
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
