@@ -41,7 +41,11 @@
                                 </Grid.ColumnDefinitions>
                                 <Button Click="AddMarkButton_Clicked" VerticalAlignment="Center" Grid.Column="0" Margin="3" Content="Добавить"/>
                                 <ComboBox ItemsSource="{Binding Path=Marks}" Grid.Column="1" Margin="5,0,0,0" x:Name="MarksComboBox">
-                   
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=StringRepr}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
                                 </ComboBox>
                             </Grid>
                         </DataTemplate>

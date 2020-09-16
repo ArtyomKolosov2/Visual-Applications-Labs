@@ -1,4 +1,5 @@
-﻿using MyContacts.Modules;
+﻿using Lab_Work_6.View;
+using MyContacts.Modules;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -43,6 +44,7 @@ namespace Lab_Work_6
             if (_contacts != null)
             {
                 _contacts.CollectionChanged += Collection_Changed;
+                
 
                 if (_contacts.Count <= 0)
                 {
@@ -54,6 +56,12 @@ namespace Lab_Work_6
         private void AddMarkButton_Clicked(object sender, RoutedEventArgs e)
         {
             Contact data = (Contact)((Button)sender).DataContext;
+            MarkDialog dialog = new MarkDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                data.Marks.Add(dialog.MarkClass);
+            }
+ 
         }
         private void Collection_Changed(object sender, NotifyCollectionChangedEventArgs e)
         {

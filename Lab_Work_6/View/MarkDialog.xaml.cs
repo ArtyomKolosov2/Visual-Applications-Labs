@@ -23,5 +23,12 @@ namespace Lab_Work_6.View
         {
             InitializeComponent();
         }
+
+        private void Ok_Click(object sender, RoutedEventArgs e)
+        {
+            MarkClass.Mark = Convert.ToInt32(MarkBox.Text);
+            MarkClass.SubjectName = SubjectNameBox.Text;
+            Close();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Lab_Work_6.Modules;
 using System;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -87,12 +88,22 @@ namespace MyContacts.Modules
     {
         private string _fio = null;
         private string _addres = null;
-        public ObservableCollectionModifed<MarkModel> Marks { get; set; } = new ObservableCollectionModifed<MarkModel>();
+        public ObservableCollectionModifed<MarkModel> Marks { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void ContactChanged([CallerMemberName]string name = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private void Collection_ChangedInvoke(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            ContactChanged();
+        }
+        public Contact()
+        {
+            Marks = new ObservableCollectionModifed<MarkModel>();
+            Marks.CollectionChanged += Collection_ChangedInvoke;
         }
         public string Fio
         {

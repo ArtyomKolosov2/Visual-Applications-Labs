@@ -26,7 +26,7 @@ namespace Lab_Work_6.Modules
         {
             get 
             { 
-                return _subjectName ?? throw new Exception("Error: Subject name doesnt exist!"); 
+                return _subjectName ?? "No Data"; 
             }
             set
             {

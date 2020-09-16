@@ -14,7 +14,6 @@ namespace Lab_Work_3
         {
             InitializeComponent();
         }
-
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             string text_x1 = GetX1_Input.Text;
@@ -68,8 +67,8 @@ namespace Lab_Work_3
                 xn = Round(xn, 4);
                 result_str.Append
                 (
-                    $"{i.ToString()}. xn = {xn}, S(x) = {Round(GetSXFunctionResult(xn, n), 4)}\t" +
-                    $"Y(x) = {Round(GetYXFunctionResult(xn), 4)}\n"
+                    $"{i.ToString()}. xn = {xn}, S(x) = {GetSXFunctionResult(xn, n)}\t" +
+                    $"Y(x) = {GetYXFunctionResult(xn)}\n"
                 );
             }
             return result_str.ToString();
@@ -77,20 +76,29 @@ namespace Lab_Work_3
 
         private double GetSXFunctionResult(double x, int n)
         {
-            double Co = 1;
-            double f = Co;
-            double sum = f;
-            int k = 1;
+            double sum = 0;
+            int k = 0;
             while (k < n)
             {
-                double T = -(Pow(x, 2) *(k + 1)) / ((2 * Pow(k, 2) + 1) * (2 * k + 1));
-                f *= T;
-                sum += f;
+                sum += CountSXElement(x, k);
                 k++;
             }
             return sum;
         }
-
+        private double CountSXElement(double x, int k)
+        {
+            double result = Pow(-1, k) * ((2d * Pow(k, 2) + 1) / Factorial(2 * k)) * Pow(x, 2 * k);
+            return result;
+        }
+        private long Factorial(int num)
+        {
+            long result = 1;
+            for (int i = 2; i <= num; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
         private double GetYXFunctionResult(double x)
         {
             return (1 - ((x * x) / 2d)) * Cos(x) - (x / 2d) * Sin(x);
