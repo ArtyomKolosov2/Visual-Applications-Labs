@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Lab_Work_6.Modules
 {
@@ -26,7 +23,7 @@ namespace Lab_Work_6.Modules
         {
             get 
             { 
-                return _subjectName ?? "No Data"; 
+                return _subjectName ?? string.Empty; 
             }
             set
             {
@@ -77,7 +74,7 @@ namespace Lab_Work_6.Modules
         }
         public string Error
         {
-            get { throw new NotImplementedException(); }
+            get { return string.Empty; }
         }
     }
 }

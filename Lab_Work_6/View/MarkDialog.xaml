@@ -22,7 +22,7 @@
             <TextBox.Text>
                 <Binding Path="SubjectName">
                     <Binding.ValidationRules>
-                        <DataErrorValidationRule/>
+                        <ExceptionValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
