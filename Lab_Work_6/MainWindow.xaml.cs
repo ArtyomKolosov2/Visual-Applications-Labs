@@ -4,6 +4,7 @@ using MyContacts.Modules;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,6 +17,7 @@ namespace Lab_Work_6
     public partial class MainWindow : Window
     {
         private ObservableCollectionModifed<Contact> _contacts;
+        public SearchArgs SearchArgs { get; } = new SearchArgs();
 
         private readonly JsonIOservice _jsonIO = new JsonIOservice();
         public MainWindow()
@@ -36,6 +38,7 @@ namespace Lab_Work_6
             {
                 _contacts.CollectionChanged += Collection_Changed;
                 DataGridInfo.ItemsSource = _contacts;
+                SearchGrid.DataContext = SearchArgs;
             }
             
         }
@@ -69,20 +72,37 @@ namespace Lab_Work_6
             dialog.ShowDialog();
         }
 
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        private List<Contact> SearchData()
         {
             List<Contact> result = new List<Contact>(_contacts.Count);
             foreach (Contact contact in _contacts)
             {
-                if (contact.Addres.Contains("Minsk") && contact.MiddleMark >= 4.5)
+                if (contact.Addres.Contains(SearchArgs.SearchAddres) && contact.MiddleMark >= SearchArgs.SearchMark)
                 {
                     result.Add(contact);
                 }
             }
-            foreach (var r in result)
+            result.Sort(new ContactFIOcomparer());
+            return result;
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SearchArgs.IsAnyMarksError == false)
             {
-                SearchResultTextBox.Text += $"FIO: {r.Fio}, Addres {r.Addres}, Middle Mark {r.MiddleMark}\n";
+                List<Contact> result = SearchData();
+                StringBuilder resultString = new StringBuilder();
+                foreach (var r in result)
+                {
+                    resultString.Append($"FIO: {r.Fio}, Addres {r.Addres}, Middle Mark {r.MiddleMark}\n");
+                }
+                SearchResultTextBox.Text = resultString.ToString();
             }
+        }
+
+        private void MarkBox_Error(object sender, ValidationErrorEventArgs e)
+        {
+            SearchArgs.IsAnyMarksError = e.Action == ValidationErrorEventAction.Added ? true : false;
         }
     }
 }
