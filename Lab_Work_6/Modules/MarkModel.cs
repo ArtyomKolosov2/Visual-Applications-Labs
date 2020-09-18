@@ -13,10 +13,21 @@ namespace Lab_Work_6.Modules
         }
         private int _mark;
         private string _subjectName;
+        private string _strRepr;
 
         public string StringRepr
         {
-            get { return $"{SubjectName} : {Mark}"; }
+            get { return _strRepr; }
+            set 
+            { 
+                _strRepr = value;
+                OnPropertyChanged();
+            }
+            
+        }
+        public override string ToString()
+        {
+           return $"{SubjectName} : {Mark}";
         }
 
         public string SubjectName
@@ -28,6 +39,7 @@ namespace Lab_Work_6.Modules
             set
             {
                 _subjectName = value;
+                StringRepr = ToString();
                 OnPropertyChanged();
             }
         }
@@ -43,6 +55,7 @@ namespace Lab_Work_6.Modules
                 if (value > 0  && value < 11)
                 {
                     _mark = value;
+                    StringRepr = ToString();
                     OnPropertyChanged();
                 }
                 

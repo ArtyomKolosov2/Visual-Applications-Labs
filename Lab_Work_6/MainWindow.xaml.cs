@@ -1,9 +1,11 @@
-﻿using Lab_Work_6.View;
+﻿using Lab_Work_6.Modules;
+using Lab_Work_6.View;
 using MyContacts.Modules;
 using System;
 using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Lab_Work_6
 {
@@ -14,7 +16,7 @@ namespace Lab_Work_6
     {
         private ObservableCollectionModifed<Contact> _contacts;
 
-        private JsonIOservice _jsonIO = new JsonIOservice();
+        private readonly JsonIOservice _jsonIO = new JsonIOservice();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,36 +29,30 @@ namespace Lab_Work_6
             }
             catch (Exception ex)
             {
-                Close();
                 MessageBox.Show(ex.Message + ex.GetType());
             }
             if (_contacts != null)
             {
                 _contacts.CollectionChanged += Collection_Changed;
-                
-
-                if (_contacts.Count <= 0)
-                {
-                    _contacts.AddContactRange(CreateRandomContacts.GetContacts(new Random().Next(1, 100)));
-                }
                 DataGridInfo.ItemsSource = _contacts;
             }
+            
         }
         private void AddMarkButton_Clicked(object sender, RoutedEventArgs e)
         {
             Contact data = (Contact)((Button)sender).DataContext;
-            MarkDialog dialog = new MarkDialog();
+            MarkDialog dialog = new MarkDialog(new MarkModel());
             if (dialog.ShowDialog() == true)
             {
                 data.Marks.Add(dialog.MarkClass);
             }
  
         }
-        private async void Collection_Changed(object sender, NotifyCollectionChangedEventArgs e)
+        private void Collection_Changed(object sender, NotifyCollectionChangedEventArgs e)
         {
             try
             {
-                await _jsonIO.WriteToJsonFileAsync(_contacts);
+                _jsonIO.WriteToJsonFile(_contacts);
             }
             catch (Exception ex)
             {
@@ -65,7 +61,12 @@ namespace Lab_Work_6
             }
         }
 
-       
+        private void ComboBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MarkModel data = (MarkModel)((ComboBoxItem)sender).DataContext;
+            MarkDialog dialog = new MarkDialog(data);
+            dialog.ShowDialog();
+        }
     }
 }
 

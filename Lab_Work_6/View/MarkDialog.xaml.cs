@@ -18,17 +18,17 @@ namespace Lab_Work_6.View
     /// </summary>
     public partial class MarkDialog : Window
     {
-        public MarkModel MarkClass { get; set; } = new MarkModel();
+        public MarkModel MarkClass { get; set; }
         private bool IsAnyMarkErrors { get; set; }
         public MarkDialog()
         {
             InitializeComponent();
-            DataContext = MarkClass;
         }
 
         public MarkDialog(MarkModel mark) : this()
         {
             MarkClass = mark;
+            DataContext = MarkClass;
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)

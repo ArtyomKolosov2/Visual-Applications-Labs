@@ -8,12 +8,30 @@ namespace MyContacts.Modules
 {
     public class JsonIOservice
     {
-        private JsonSerializer serializer = new JsonSerializer();
-        public string JsonPath { get; set; } = Directory.GetCurrentDirectory() + "/ContactsInfo.json";
+        public string JsonPath { get; set; }
+
+        public JsonIOservice(string path)
+        {
+            JsonPath = path;
+        }
+        public JsonIOservice() 
+        {
+            JsonPath = Directory.GetCurrentDirectory() + "/ContactsInfo.json";
+        }
+       
+        public void WriteToJsonFile<T>(ObservableCollectionModifed<T> contacts) where T : INotifyPropertyChanged
+        {
+            using (TextWriter writer = File.CreateText(JsonPath))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(writer, contacts);
+            }
+        }
         public async Task WriteToJsonFileAsync<T>(ObservableCollectionModifed<T> contacts) where T : INotifyPropertyChanged
         {
-            using (StreamWriter writer = File.CreateText(JsonPath))
+            using (TextWriter writer = File.CreateText(JsonPath))
             {
+                JsonSerializer serializer = new JsonSerializer();
                 await Task.Run(() => serializer.Serialize(writer, contacts));
             }
         }
@@ -24,13 +42,13 @@ namespace MyContacts.Modules
         }
         public ObservableCollectionModifed<Contact> LoadContacts()
         {
-            var IsExist = File.Exists(JsonPath);
+            bool IsExist = File.Exists(JsonPath);
             ObservableCollectionModifed<Contact> readContacts = null;
             if (IsExist)
             {
                 using (TextReader reader = File.OpenText(JsonPath))
                 {
-                    readContacts = (ObservableCollectionModifed<Contact>)serializer.Deserialize(reader, typeof(ObservableCollectionModifed<Contact>));
+                    readContacts = (ObservableCollectionModifed<Contact>)JsonConvert.DeserializeObject(reader.ReadToEnd(), typeof(ObservableCollectionModifed<Contact>));
                 }
             }
             else

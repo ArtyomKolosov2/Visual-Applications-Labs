@@ -30,7 +30,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Fio}" Header="Ф.И.О." Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Path=Addres}" Header="Адрес" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Path=MiddleMark}" Header="Ср. балл" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Path=MiddleMark, Mode=OneWay}" Header="Ср. балл" Width="auto"/>
                 <DataGridTemplateColumn Header="Оценки" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -43,7 +43,9 @@
                                 <ComboBox ItemsSource="{Binding Path=Marks}" Grid.Column="1" Margin="5,0,0,0" x:Name="MarksComboBox">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Path=StringRepr}"/>
+                                            <ComboBoxItem MouseDoubleClick="ComboBoxItem_MouseDoubleClick">
+                                                <TextBlock Text="{Binding Path=StringRepr, Mode=OneWay}"/>
+                                            </ComboBoxItem>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>

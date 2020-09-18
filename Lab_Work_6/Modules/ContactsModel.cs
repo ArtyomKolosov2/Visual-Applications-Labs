@@ -8,8 +8,8 @@ namespace MyContacts.Modules
 {
     public static class CreateRandomContacts
     {
-        private static Random random = new Random();
-        private static string[] names = new string[]
+        private static readonly Random random = new Random();
+        private static readonly string[] names = new string[]
         {
             "Artyom",
             "Vanya",
@@ -43,7 +43,7 @@ namespace MyContacts.Modules
             null
         };
 
-        private static string[] surNames = new string[]
+        private static readonly string[] surNames = new string[]
         {
             "Allyson",
             "Katlinsky",
