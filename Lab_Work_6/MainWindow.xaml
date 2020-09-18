@@ -12,6 +12,7 @@
     <Window.CommandBindings>
         <CommandBinding Command="local:CustomCommands.Save" CanExecute="SaveCommand_CanExecute" Executed="SaveCommand_Executed"/>
         <CommandBinding Command="local:CustomCommands.Exit" CanExecute="ExitCommand_CanExecute" Executed="ExitCommand_Executed"/>
+        <CommandBinding Command="local:CustomCommands.Load" CanExecute="LoadCommand_CanExecute" Executed="LoadCommand_Executed"/>
     </Window.CommandBindings>
     <TabControl>
         <TabItem Header="Данные">
@@ -25,8 +26,8 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <DockPanel Grid.Row="1" Grid.ColumnSpan="2">
-                    <Button Style="{DynamicResource RoundCorner}" MinWidth="100" Margin="10, 5, 5, 5" Content="Save"/>
-                    <Button Style="{DynamicResource RoundCorner}" MinWidth="100" Margin="5" Content="Load"/>
+                    <Button Style="{DynamicResource RoundCorner}" Command="local:CustomCommands.Save" MinWidth="100" Margin="10, 5, 5, 5" Content="Save Data"/>
+                    <Button Style="{DynamicResource RoundCorner}"  Command="local:CustomCommands.Load" MinWidth="100" Margin="5" Content="Load Data"/>
                     <Button HorizontalAlignment="Right" Style="{DynamicResource RoundCorner}" Command="local:CustomCommands.Exit" MinWidth="100" Margin="5, 5, 10, 5">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">

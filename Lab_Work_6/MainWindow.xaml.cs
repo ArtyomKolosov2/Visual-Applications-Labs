@@ -1,9 +1,11 @@
 ﻿using Lab_Work_6.Modules;
 using Lab_Work_6.View;
+using Microsoft.Win32;
 using MyContacts.Modules;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,31 +18,19 @@ namespace Lab_Work_6
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollectionModifed<Contact> _contacts;
+        private ObservableCollectionModifed<Contact> _contacts = new ObservableCollectionModifed<Contact>();
+        public string JsonFilePath { get; private set; } = Directory.GetCurrentDirectory() + "/ContactsInfo.json";
         public SearchArgs SearchArgs { get; } = new SearchArgs();
 
-        private readonly JsonIOservice _jsonIO = new JsonIOservice();
         public MainWindow()
         {
             InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                _contacts = _jsonIO.LoadContacts();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.GetType());
-            }
-            if (_contacts != null)
-            {
-                _contacts.CollectionChanged += Collection_Changed;
-                DataGridInfo.ItemsSource = _contacts;
-                SearchGrid.DataContext = SearchArgs;
-            }
-            
+            _contacts.CollectionChanged += Collection_Changed;
+            DataGridInfo.ItemsSource = _contacts;
+            SearchGrid.DataContext = SearchArgs;
         }
         private void AddMarkButton_Clicked(object sender, RoutedEventArgs e)
         {
@@ -56,7 +46,7 @@ namespace Lab_Work_6
         {
             try
             {
-                _jsonIO.WriteToJsonFile(_contacts);
+                JsonIOservice.WriteToJsonFile(_contacts, JsonFilePath);
             }
             catch (Exception ex)
             {
@@ -119,14 +109,33 @@ namespace Lab_Work_6
             e.CanExecute = true;
         }
 
-        private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        private async void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-           /* string text = StringComboBox.Text;
-            if (text.Length > 0)
+            SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                StringComboBox.Text = string.Empty;
-                _strings.Add(text.Trim());
-            }*/
+                Filter = "Json Files (*.json)|*.json|Txt Files (*.txt)|*.txt"
+            };
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                await JsonIOservice.WriteToJsonFileAsync(_contacts, saveFileDialog.FileName);
+            }
+        }
+        private async void LoadCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Json Files (*.json)|*.json|Text Files (*.txt)|*.txt*"
+            };
+            if (openFileDialog.ShowDialog() == true)
+            {
+                _contacts.Clear();
+                JsonFilePath = openFileDialog.FileName;
+                _contacts.AddContactRange(await JsonIOservice.LoadContactsAsync(JsonFilePath));
+            }
+        }
+        private void LoadCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }

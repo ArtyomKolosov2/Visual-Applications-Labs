@@ -6,54 +6,43 @@ using System.Threading.Tasks;
 
 namespace MyContacts.Modules
 {
-    public class JsonIOservice
+    public static class JsonIOservice
     {
-        public string JsonPath { get; set; }
-
-        public JsonIOservice(string path)
+        public static void WriteToJsonFile<T>(ObservableCollectionModifed<T> contacts, string path) where T : INotifyPropertyChanged
         {
-            JsonPath = path;
-        }
-        public JsonIOservice() 
-        {
-            JsonPath = Directory.GetCurrentDirectory() + "/ContactsInfo.json";
-        }
-       
-        public void WriteToJsonFile<T>(ObservableCollectionModifed<T> contacts) where T : INotifyPropertyChanged
-        {
-            using (TextWriter writer = File.CreateText(JsonPath))
+            using (TextWriter writer = File.CreateText(path))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(writer, contacts);
             }
         }
-        public async Task WriteToJsonFileAsync<T>(ObservableCollectionModifed<T> contacts) where T : INotifyPropertyChanged
+        public static async Task WriteToJsonFileAsync<T>(ObservableCollectionModifed<T> contacts, string path) where T : INotifyPropertyChanged
         {
-            using (TextWriter writer = File.CreateText(JsonPath))
+            using (TextWriter writer = File.CreateText(path))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 await Task.Run(() => serializer.Serialize(writer, contacts));
             }
         }
 
-        public async Task<ObservableCollectionModifed<Contact>> LoadContactsAsync()
+        public static async Task<ObservableCollectionModifed<Contact>> LoadContactsAsync(string path)
         {
-            return await Task.Run(() => LoadContacts());
+            return await Task.Run(() => LoadContacts(path));
         }
-        public ObservableCollectionModifed<Contact> LoadContacts()
+        public static ObservableCollectionModifed<Contact> LoadContacts(string path)
         {
-            bool IsExist = File.Exists(JsonPath);
+            bool IsExist = File.Exists(path);
             ObservableCollectionModifed<Contact> readContacts = null;
             if (IsExist)
             {
-                using (TextReader reader = File.OpenText(JsonPath))
+                using (TextReader reader = File.OpenText(path))
                 {
                     readContacts = (ObservableCollectionModifed<Contact>)JsonConvert.DeserializeObject(reader.ReadToEnd(), typeof(ObservableCollectionModifed<Contact>));
                 }
             }
             else
             {
-                File.CreateText(JsonPath);
+                File.CreateText(path);
             }
             return readContacts ?? new ObservableCollectionModifed<Contact>();
         }
