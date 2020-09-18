@@ -12,7 +12,6 @@ namespace MyContacts.Modules
         {
             CollectionChanged += NewCollectionChange;
         }
-
         private void NewCollectionChange(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -30,7 +29,6 @@ namespace MyContacts.Modules
                 }
             }
         }
-
         public void AddContactRange<V>(V newData) where V : IEnumerable
         {
             foreach (T newContact in newData)
@@ -41,7 +39,6 @@ namespace MyContacts.Modules
                 }
             }
         }
-
         private void ItemPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             NotifyCollectionChangedEventArgs args = new NotifyCollectionChangedEventArgs

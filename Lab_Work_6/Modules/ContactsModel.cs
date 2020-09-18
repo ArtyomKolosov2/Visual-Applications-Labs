@@ -1,5 +1,7 @@
 ﻿using Lab_Work_6.Modules;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -82,6 +84,13 @@ namespace MyContacts.Modules
                 };
             }
             return newContacts;
+        }
+    }
+    public class ContactFIOcomparer : IComparer<Contact>
+    {
+        public int Compare(Contact o1, Contact o2)
+        {
+            return o1.Fio.CompareTo(o2.Fio);
         }
     }
     public class Contact : INotifyPropertyChanged

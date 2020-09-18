@@ -2,6 +2,7 @@
 using Lab_Work_6.View;
 using MyContacts.Modules;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
@@ -66,6 +67,22 @@ namespace Lab_Work_6
             MarkModel data = (MarkModel)((ComboBoxItem)sender).DataContext;
             MarkDialog dialog = new MarkDialog(data);
             dialog.ShowDialog();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            List<Contact> result = new List<Contact>(_contacts.Count);
+            foreach (Contact contact in _contacts)
+            {
+                if (contact.Addres.Contains("Minsk") && contact.MiddleMark >= 4.5)
+                {
+                    result.Add(contact);
+                }
+            }
+            foreach (var r in result)
+            {
+                SearchResultTextBox.Text += $"FIO: {r.Fio}, Addres {r.Addres}, Middle Mark {r.MiddleMark}\n";
+            }
         }
     }
 }

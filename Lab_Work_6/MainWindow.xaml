@@ -17,43 +17,61 @@
             <Setter Property="Control.BorderThickness" Value="4"/>
         </Style>
     </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <DataGrid Style="{StaticResource MainStyle}" x:Name="DataGridInfo" Margin="10" Grid.ColumnSpan="2" Grid.Column="0" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Fio}" Header="Ф.И.О." Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Path=Addres}" Header="Адрес" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Path=MiddleMark, Mode=OneWay}" Header="Ср. балл" Width="auto"/>
-                <DataGridTemplateColumn Header="Оценки" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Click="AddMarkButton_Clicked" VerticalAlignment="Center" Grid.Column="0" Margin="3" Content="Добавить"/>
-                                <ComboBox ItemsSource="{Binding Path=Marks}" Grid.Column="1" Margin="5,0,0,0" x:Name="MarksComboBox">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <ComboBoxItem MouseDoubleClick="ComboBoxItem_MouseDoubleClick">
-                                                <TextBlock Text="{Binding Path=StringRepr, Mode=OneWay}"/>
-                                            </ComboBoxItem>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </Grid>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    <TabControl>
+        <TabItem Header="Данные">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <DataGrid Style="{StaticResource MainStyle}" x:Name="DataGridInfo" Margin="10" Grid.ColumnSpan="2" Grid.Column="0" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=Fio}" Header="Ф.И.О." Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=Addres}" Header="Адрес" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=MiddleMark, Mode=OneWay}" Header="Ср. балл" Width="auto"/>
+                        <DataGridTemplateColumn Header="Оценки" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Click="AddMarkButton_Clicked" VerticalAlignment="Center" Grid.Column="0" Margin="3" Content="Добавить"/>
+                                        <ComboBox ItemsSource="{Binding Path=Marks}" Grid.Column="1" Margin="5,0,0,0" x:Name="MarksComboBox">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ComboBoxItem MouseDoubleClick="ComboBoxItem_MouseDoubleClick">
+                                                        <TextBlock Text="{Binding Path=StringRepr, Mode=OneWay}"/>
+                                                    </ComboBoxItem>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Поиск">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="SearchResultTextBox" IsReadOnly="True" Margin="5"/>
+                <Button x:Name="SearchButton" Grid.ColumnSpan="2" Margin="10" Grid.Row="1" Click="SearchButton_Click">Поиск</Button>
+            </Grid>
+        </TabItem>
+    </TabControl>
 </Window>
