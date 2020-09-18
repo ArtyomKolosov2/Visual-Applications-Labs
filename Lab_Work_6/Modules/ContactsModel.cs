@@ -88,6 +88,7 @@ namespace MyContacts.Modules
     {
         private string _fio = null;
         private string _addres = null;
+        private double _middle_mark = 0;
         public ObservableCollectionModifed<MarkModel> Marks { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -96,9 +97,29 @@ namespace MyContacts.Modules
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+        private void CountMiddleMark()
+        {
+            int sum = 0;
+            foreach (var mark in Marks)
+            {
+                sum += mark.Mark;
+            }
+            MiddleMark = Math.Round((double)sum / Marks.Count, 2);
+        }
+
+        public double MiddleMark
+        {
+            get { return _middle_mark; }
+            private set 
+            { 
+                _middle_mark = value;
+                ContactChanged();
+            }
+        }
+
         private void Collection_ChangedInvoke(object sender, NotifyCollectionChangedEventArgs e)
         {
-            ContactChanged();
+            CountMiddleMark();
         }
         public Contact()
         {

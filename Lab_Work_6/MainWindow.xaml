@@ -30,6 +30,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Fio}" Header="Ф.И.О." Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Path=Addres}" Header="Адрес" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Path=MiddleMark}" Header="Ср. балл" Width="auto"/>
                 <DataGridTemplateColumn Header="Оценки" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

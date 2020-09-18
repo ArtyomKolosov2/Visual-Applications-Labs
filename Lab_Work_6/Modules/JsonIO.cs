@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.ComponentModel;
 using System.IO;
-
+using System.Threading.Tasks;
 
 namespace MyContacts.Modules
 {
@@ -10,21 +10,25 @@ namespace MyContacts.Modules
     {
         private JsonSerializer serializer = new JsonSerializer();
         public string JsonPath { get; set; } = Directory.GetCurrentDirectory() + "/ContactsInfo.json";
-        public void WriteToJsonFile<T>(ObservableCollectionModifed<T> contacts) where T : INotifyPropertyChanged
+        public async Task WriteToJsonFileAsync<T>(ObservableCollectionModifed<T> contacts) where T : INotifyPropertyChanged
         {
             using (StreamWriter writer = File.CreateText(JsonPath))
             {
-                serializer.Serialize(writer, contacts);
+                await Task.Run(() => serializer.Serialize(writer, contacts));
             }
         }
 
+        public async Task<ObservableCollectionModifed<Contact>> LoadContactsAsync()
+        {
+            return await Task.Run(() => LoadContacts());
+        }
         public ObservableCollectionModifed<Contact> LoadContacts()
         {
             var IsExist = File.Exists(JsonPath);
             ObservableCollectionModifed<Contact> readContacts = null;
             if (IsExist)
             {
-                using (StreamReader reader = File.OpenText(JsonPath))
+                using (TextReader reader = File.OpenText(JsonPath))
                 {
                     readContacts = (ObservableCollectionModifed<Contact>)serializer.Deserialize(reader, typeof(ObservableCollectionModifed<Contact>));
                 }

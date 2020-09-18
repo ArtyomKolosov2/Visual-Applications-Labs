@@ -26,6 +26,11 @@ namespace Lab_Work_6.View
             DataContext = MarkClass;
         }
 
+        public MarkDialog(MarkModel mark) : this()
+        {
+            MarkClass = mark;
+        }
+
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             if (IsAnyMarkErrors == false)

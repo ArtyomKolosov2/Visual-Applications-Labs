@@ -52,11 +52,11 @@ namespace Lab_Work_6
             }
  
         }
-        private void Collection_Changed(object sender, NotifyCollectionChangedEventArgs e)
+        private async void Collection_Changed(object sender, NotifyCollectionChangedEventArgs e)
         {
             try
             {
-                _jsonIO.WriteToJsonFile(_contacts);
+                await _jsonIO.WriteToJsonFileAsync(_contacts);
             }
             catch (Exception ex)
             {
@@ -65,6 +65,7 @@ namespace Lab_Work_6
             }
         }
 
+       
     }
 }
 
