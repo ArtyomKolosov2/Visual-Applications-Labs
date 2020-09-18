@@ -3,12 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Lab_Work_6"
+        xmlns:local="clr-namespace:Lab_Work_6.Modules"
         mc:Ignorable="d"
         Title="Лаб. раб. №6 Ст.Гр. 10701219 Колосов А.А" Height="450" Width="800" Loaded="Window_Loaded">
     <Window.Icon>
-        <BitmapImage UriSource="/Modules/book1.ico"/>
+        <BitmapImage UriSource="/Images/book1.ico"/>
     </Window.Icon>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CustomCommands.Save" CanExecute="SaveCommand_CanExecute" Executed="SaveCommand_Executed"/>
+        <CommandBinding Command="local:CustomCommands.Exit" CanExecute="ExitCommand_CanExecute" Executed="ExitCommand_Executed"/>
+    </Window.CommandBindings>
     <TabControl>
         <TabItem Header="Данные">
             <Grid>
@@ -21,9 +25,16 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <DockPanel Grid.Row="1" Grid.ColumnSpan="2">
-                    <Button Style="{DynamicResource RoundCorner}" MinWidth="100" Margin="5" Content="Save"/>
+                    <Button Style="{DynamicResource RoundCorner}" MinWidth="100" Margin="10, 5, 5, 5" Content="Save"/>
                     <Button Style="{DynamicResource RoundCorner}" MinWidth="100" Margin="5" Content="Load"/>
-                    <Button HorizontalAlignment="Right" Style="{DynamicResource RoundCorner}" MinWidth="100" Margin="5, 5, 10, 5" Content="Exit"/>
+                    <Button HorizontalAlignment="Right" Style="{DynamicResource RoundCorner}" Command="local:CustomCommands.Exit" MinWidth="100" Margin="5, 5, 10, 5">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="0,0,5,0" MaxHeight="16" VerticalAlignment="Center" MaxWidth="16" Source="Images/exit.png"/>
+                                <TextBlock FontSize="18" Margin="0, 0, 0, 2" FontWeight="Bold" VerticalAlignment="Center" Text="Close"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
                 </DockPanel>
                 <DataGrid Style="{StaticResource MainStyle}" x:Name="DataGridInfo" Margin="10" Grid.ColumnSpan="2" Grid.Column="0" AutoGenerateColumns="False">
                     <DataGrid.Columns>

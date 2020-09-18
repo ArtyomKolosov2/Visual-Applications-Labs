@@ -104,6 +104,30 @@ namespace Lab_Work_6
         {
             SearchArgs.IsAnyMarksError = e.Action == ValidationErrorEventAction.Added ? true : false;
         }
+
+        private void ExitCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+           /* string text = StringComboBox.Text;
+            if (text.Length > 0)
+            {
+                StringComboBox.Text = string.Empty;
+                _strings.Add(text.Trim());
+            }*/
+        }
     }
 }
 
