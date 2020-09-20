@@ -54,7 +54,6 @@ namespace Lab_Work_6
                 Close();
             }
         }
-
         private void ComboBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             MarkModel data = (MarkModel)((ComboBoxItem)sender).DataContext;
@@ -67,13 +66,31 @@ namespace Lab_Work_6
             List<Contact> result = new List<Contact>(_contacts.Count);
             foreach (Contact contact in _contacts)
             {
-                if (contact.Addres.Contains(SearchArgs.SearchAddres) && contact.MiddleMark >= SearchArgs.SearchMark)
+                if (FindSubString(contact.Addres.ToLower(), SearchArgs.SearchAddres.ToLower()) && contact.MiddleMark >= SearchArgs.SearchMark)
                 {
                     result.Add(contact);
                 }
             }
             result.Sort(new ContactFIOcomparer());
             return result;
+        }
+
+        private bool FindSubString(string mainString, string subString)
+        {
+            bool searchResult = false;
+            if (mainString.Length < subString.Length)
+            {
+                return searchResult;
+            }
+            for (int i = 0; i+subString.Length < mainString.Length+1; i++)
+            {
+                if (mainString.Substring(i, subString.Length).CompareTo(subString) == 0)
+                {
+                    searchResult = true;
+                    break;
+                }
+            }
+            return searchResult;
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
