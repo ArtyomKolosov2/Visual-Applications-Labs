@@ -22,7 +22,8 @@
             <ListView x:Name="ListViewRadio">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <RadioButton Margin="3"  
+                        <RadioButton Checked="RadioButton_Checked" Margin="3"  
+                                     IsChecked="{Binding Path=IsFuncChecked}"
                                      Content="{Binding Path=GetContentText}" 
                                      GroupName="{Binding Path=GetGroupName}"/>
                     </DataTemplate>

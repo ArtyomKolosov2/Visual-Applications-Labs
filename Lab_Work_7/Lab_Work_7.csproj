@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Update="Styles\Styles.xaml">
       <SubType>Designer</SubType>
     </Page>

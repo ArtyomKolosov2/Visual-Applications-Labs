@@ -20,7 +20,7 @@ namespace Lab_Work_7.View
     /// </summary>
     public partial class FuncGroupBox : UserControl
     {
-        private MathFunctionHandler UserChoiceMathFunction { get; set; }
+        public MathFunctionHandler UserChoiceMathFunction { get; private set; }
         public FuncGroupBox()
         {
             InitializeComponent();

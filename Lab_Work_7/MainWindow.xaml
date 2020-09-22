@@ -73,7 +73,7 @@
                 MaxHeight="40" 
                 MaxWidth="240" 
                 Margin="5" 
-                Content="Start"
+                Content="Start" Click="Button_Click"
                 />
             <Label Content="M:" 
                VerticalAlignment="Center" 

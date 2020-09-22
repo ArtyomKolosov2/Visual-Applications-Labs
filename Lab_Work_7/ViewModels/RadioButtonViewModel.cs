@@ -12,6 +12,8 @@ namespace Lab_Work_7.ViewModels
 
         private static string _groupName = "MathFunctions";
 
+        public bool IsFuncChecked { get; set; } = false;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public delegate double MathFunctionHandler(double value);
