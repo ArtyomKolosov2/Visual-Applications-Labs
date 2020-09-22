@@ -16,7 +16,6 @@ namespace Lab_Work_1
     public partial class MainWindow : Window
     {
         private MathFunctionHandler UserChoiceMathFunction { get; set; }
-
         public bool CheckBoxState { get; set; }
         public ObservableCollection<RadioButtonViewModel> RadioButtons { get; private set; }
         public MainWindow()
