@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using static Lab_Work_7.ViewModels.RadioButtonViewModel;
 using static System.Math;
 
@@ -17,13 +18,17 @@ namespace Lab_Work_7.Models
         {
             double h = (xk - xn) / m;
             double fx = 0;
+            if (mathFunction == null)
+            {
+                return "Error: math function isn't choosen!";
+            }
             StringBuilder result_str = new StringBuilder();
             for (int i = 1; xn < xk && i < m+1; i++, xn += h)
             {
                 fx = Round(mathFunction(xn), 4);
                 result_str.Append
                 (
-                    $"{i.ToString()}. f(x) = {fx}, S(x) = {GetSXFunctionResult(fx, n)}\t" +
+                    $"{i.ToString()}. f(x) = {fx}, S(x) = {GetSXFunctionResult(fx, n)}  " +
                     $"Y(x) = {GetYXFunctionResult(fx)}\n"
                 );
             }

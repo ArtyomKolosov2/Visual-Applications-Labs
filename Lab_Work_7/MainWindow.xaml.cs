@@ -29,24 +29,22 @@ namespace Lab_Work_7
             InitializeComponent();
         }
 
-        public ObservableCollection<RadioButtonViewModel> RadioButtons { get; private set; }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            RadioButtons = new ObservableCollection<RadioButtonViewModel>()
-            {
-                new RadioButtonViewModel
+            MathFuncGroup.AddNewRadioButtonRange
+            (new RadioButtonViewModel[]
                 {
-                    GetContentText="sh(x)",
-                    MathFunction= (double num) => (Pow(E, num) - Pow(E, -num)) / 2d,
-                    IsFuncChecked = true
-                    
-                },
-                new RadioButtonViewModel{GetContentText="x^2", MathFunction=(double num) => Pow(num, 2) },
-                new RadioButtonViewModel{GetContentText="x^3", MathFunction=(double num) => Pow(num, 3) },
-                new RadioButtonViewModel{GetContentText="e^x", MathFunction=(double num) => Pow(E, num) }
-            };
-            MathFuncGroup.ListViewRadio.ItemsSource = RadioButtons;
+                    new RadioButtonViewModel
+                    {
+                        GetContentText="sh(x)",
+                        MathFunction= (double num) => (Pow(E, num) - Pow(E, -num)) / 2d,
+                        IsFuncChecked = true
+                    },
+                    new RadioButtonViewModel{GetContentText="x^2", MathFunction=(double num) => Pow(num, 2) },
+                    new RadioButtonViewModel{GetContentText="x^3", MathFunction=(double num) => Pow(num, 3) },
+                    new RadioButtonViewModel{GetContentText="e^x", MathFunction=(double num) => Pow(E, num) }
+                }
+            );
             ResultTextBox.Text += "Лаб. раб. №7 Ст.Гр. 10701219 Колосов А.А\n";
         }
 
@@ -86,7 +84,7 @@ namespace Lab_Work_7
             ResultTextBox.Text += resultString;
             if (Is_Succes)
             {              
-                ResultTextBox.Text = await MathFunctions.StartCountAsync(x1, x2, n, m, MathFuncGroup.UserChoiceMathFunction);
+                ResultTextBox.Text += await MathFunctions.StartCountAsync(x1, x2, n, m, MathFuncGroup.UserChoiceMathFunction);
             }
         }
     }

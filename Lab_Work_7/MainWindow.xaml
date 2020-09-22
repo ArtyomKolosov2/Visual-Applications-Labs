@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lab_Work_7"
         xmlns:local1="clr-namespace:Lab_Work_7.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600" Loaded="Window_Loaded">
+        Title="Лаб. раб. №7 Ст.Гр. 10701219 Колосов А.А" Height="450" Width="550" Loaded="Window_Loaded">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
