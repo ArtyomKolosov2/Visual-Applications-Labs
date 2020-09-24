@@ -35,11 +35,12 @@ namespace Lab_Work_4
         {
             MainDataGridView.AllowUserToAddRows = false;
         }
-        private void ResizeButton_Click(object sender, RoutedEventArgs e)
+        private async void ResizeButton_Click(object sender, RoutedEventArgs e)
         {
-            StartResize();
-        }    
-        private void StartResize()
+            await StartResizeAsync();
+        }  
+
+        private async Task StartResizeAsync()
         {
             string text_m = SizeTextBoxM.Text;
             string text_n = SizeTextBoxN.Text;
@@ -57,14 +58,24 @@ namespace Lab_Work_4
             MainDataGridView.RowCount = m;
             MainDataGridView.ColumnCount = n;    
             _mainIntMatrix = new int[m, n];
-            for (int i = 0; i < n; i++)
+            await Task.Run(() =>
             {
-                MainDataGridView.Columns[i].HeaderText = $"i={i.ToString()}";
-            }
-            for (int i = 0; i < m; i++)
-            {
-                MainDataGridView.Rows[i].HeaderCell.Value = $"j={i.ToString()}";
-            }
+                for (int i = 0; i < n; i++)
+                {
+                    MainDataGridView.Columns[i].HeaderText = $"i={i.ToString()}";
+                }
+                for (int i = 0; i < m; i++)
+                {
+                    MainDataGridView.Rows[i].HeaderCell.Value = $"j={i.ToString()}";
+                }
+                for (int i = 0; i < m; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        MainDataGridView[i, j].Value = _mainIntMatrix[i, j].ToString();
+                    }
+                }
+            });
             MainDataGridView.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
             GC.Collect();
         }
