@@ -25,7 +25,7 @@ namespace Lab_Work_4
                 string data = dataGrid[column, row]?.Value?.ToString();
                 if (!int.TryParse(data, out _mainIntMatrix[column, row]))
                 {
-                    data = string.Empty;
+                    data = "0";
                 }
                 dataGrid[column, row].Value = data;
                 dataGrid.Refresh();
@@ -72,7 +72,7 @@ namespace Lab_Work_4
                 {
                     for (int j = 0; j < n; j++)
                     {
-                        MainDataGridView[i, j].Value = _mainIntMatrix[i, j].ToString();
+                        MainDataGridView[i, j].Value = "0";
                     }
                 }
             });
