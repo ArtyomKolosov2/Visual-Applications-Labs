@@ -70,5 +70,17 @@ namespace Lab_Work_5
                 ResultTextBox.Text = string.Join('\n', words);
             }
         }
+
+        private void StringComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            /*List<string> vs = new List<string>()
+            {
+                "Kolosov AA",
+                "Kuzmich Ivan",
+                "Kramsaev Volodya",
+                "Nikita Vershinin"
+            };
+            StringComboBox.ItemsSource = vs;*/
+        }
     }  
 }

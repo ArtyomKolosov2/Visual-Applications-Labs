@@ -31,7 +31,7 @@
         </StackPanel>
         <WindowsFormsHost Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="10">
             <WindowsFormsHost.Child>
-                <MS:DataGridView x:Name="MainDataGridView" CellEndEdit="MainDataGridView_CellEndEdit">
+                <MS:DataGridView x:Name="MainDataGridView" CellEndEdit="MainDataGridView_CellEndEdit" CellClick="MainDataGridView_CellClick">
                 </MS:DataGridView>
             </WindowsFormsHost.Child> 
         </WindowsFormsHost>

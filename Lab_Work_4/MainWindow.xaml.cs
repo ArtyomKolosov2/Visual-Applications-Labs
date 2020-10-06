@@ -123,5 +123,17 @@ namespace Lab_Work_4
             }
             return result;
         }
+
+        private void MainDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGrid = (DataGridView)sender;
+            int column = e.ColumnIndex, row = e.RowIndex;
+            string data = dataGrid[column, row]?.Value?.ToString();
+            ResultTextBox.Clear();
+            ResultTextBox.Text += $"Выделенная ячейка i={column}, j={row}, Value = {data}";
+            dataGrid.Refresh();
+
+
+        }
     }
 }
