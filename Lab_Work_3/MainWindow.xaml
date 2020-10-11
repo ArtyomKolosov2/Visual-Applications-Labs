@@ -71,6 +71,7 @@
                 Margin="5" 
                 Content="Start"
                 Click="Button_Click"/>
+        
         <Label Content="M:" 
                VerticalAlignment="Center" 
                Grid.Row="1" Grid.Column="1" 
