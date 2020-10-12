@@ -24,9 +24,11 @@ namespace Lab_Work_9
     /// </summary>
     public partial class MainWindow : Window
     {
+        public readonly string TitleText = "Лаб. раб. №9 Ст.Гр. 10701219 Колосов А.А\n";
         public MainWindow()
         {
             InitializeComponent();
+            Title = TitleText;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -44,7 +46,7 @@ namespace Lab_Work_9
                     new RadioButtonViewModel{GetContentText="e^x", MathFunction=(double num) => Pow(E, num) }
                 }
             );
-            ResultTextBox.Text += "Лаб. раб. №9 Ст.Гр. 10701219 Колосов А.А\n";
+            ResultTextBox.Text += TitleText;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -76,7 +78,7 @@ namespace Lab_Work_9
             }
             ResultTextBox.Clear();
             string resultString =
-               "Лаб. раб. №9 Ст.Гр. 10701219 Колосов А.А\n" +
+               $"{TitleText}\n" +
                $"x1 = {text_x1}\n" +
                $"x2 = {text_x2}\n" +
                $"N = {text_n}\n";

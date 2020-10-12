@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_Work_9" xmlns:local1="clr-namespace:Lab_Work_9.View"
         mc:Ignorable="d"
-        Title="Лаб. раб. №9 Ст.Гр. 10701219 Колосов А.А" Height="450" Width="600" Loaded="Window_Loaded">
+        Height="450" Width="600" Loaded="Window_Loaded">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -57,7 +57,6 @@
                  Grid.Column="1" Text="10"/>
 
             <TextBox x:Name="ResultTextBox" Style="{StaticResource RoundTextBox}" 
-                 Text="Лаб. раб. №9 Ст.Гр. 10701219 Колосов А.А"
                  Margin="10" 
                  IsReadOnly="True" 
                  Grid.Column="0" 
