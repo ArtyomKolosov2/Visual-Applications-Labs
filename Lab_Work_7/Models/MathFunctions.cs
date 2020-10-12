@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using static Lab_Work_7.ViewModels.RadioButtonViewModel;
+using static Lab_Work_9.ViewModels.RadioButtonViewModel;
 using static System.Math;
 
-namespace Lab_Work_7.Models
+namespace Lab_Work_9.Models
 {
     public static class MathFunctions
     {

@@ -1,10 +1,10 @@
-﻿<Window x:Class="Lab_Work_7.MainWindow"
+﻿<Window x:Class="Lab_Work_9.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Lab_Work_7"
-        xmlns:local1="clr-namespace:Lab_Work_7.View"
+        xmlns:local="clr-namespace:Lab_Work_9"
+        xmlns:local1="clr-namespace:Lab_Work_9.View"
         mc:Ignorable="d"
         Title="Лаб. раб. №7 Ст.Гр. 10701219 Колосов А.А" Height="450" Width="550" Loaded="Window_Loaded">
     <Grid>
@@ -58,7 +58,7 @@
                  Grid.Column="1" Text="10"/>
 
             <TextBox x:Name="ResultTextBox" Style="{StaticResource RoundTextBox}" 
-                 Text="Лаб. раб. №3 Ст.Гр. 10701219 Колосов А.А"
+                 Text="Лаб. раб. №7 Ст.Гр. 10701219 Колосов А.А"
                  Margin="10" 
                  IsReadOnly="True" 
                  Grid.Column="0" 

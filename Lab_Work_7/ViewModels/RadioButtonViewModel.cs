@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Lab_Work_7.ViewModels
+namespace Lab_Work_9.ViewModels
 {
     public class RadioButtonViewModel : INotifyPropertyChanged
     {

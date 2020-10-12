@@ -1,4 +1,4 @@
-﻿using Lab_Work_7.ViewModels;
+﻿using Lab_Work_9.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,10 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static Lab_Work_7.ViewModels.RadioButtonViewModel;
+using static Lab_Work_9.ViewModels.RadioButtonViewModel;
 using static System.Math;
 
-namespace Lab_Work_7.View
+namespace Lab_Work_9.View
 {
     /// <summary>
     /// Логика взаимодействия для FuncGroupBox.xaml

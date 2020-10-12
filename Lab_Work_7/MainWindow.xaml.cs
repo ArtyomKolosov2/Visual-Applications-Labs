@@ -1,4 +1,4 @@
-﻿using Lab_Work_7.ViewModels;
+﻿using Lab_Work_9.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,9 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Math;
-using Lab_Work_7.Models;
+using Lab_Work_9.Models;
 
-namespace Lab_Work_7
+namespace Lab_Work_9
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
