@@ -41,7 +41,7 @@ namespace Lab_Work_8_Framework
                     Values = new ChartValues<double> { 3, 5, 7, 4 }
                 },
             };
-            MyChart.DataContext = this; 
+            MyChart.DataContext = this;  
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
