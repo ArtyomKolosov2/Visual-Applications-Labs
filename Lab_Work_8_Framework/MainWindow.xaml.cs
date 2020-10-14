@@ -13,10 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lab_Work_8
+namespace Lab_Work_8_Framework
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -24,5 +24,16 @@ namespace Lab_Work_8
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var c = new LiveChartVM();
+            MyChart.DataContext = c;
+        }
+    }
+    public class LiveChartVM
+    {
+        public double[] SPoints = new double[] { 1, 2, 3, 4 };
+        public double[] CPoints = new double[] { 1, 2, 3, 4 };
     }
 }
