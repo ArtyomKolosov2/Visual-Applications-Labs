@@ -53,7 +53,7 @@ namespace Lab_Work_8_Framework
                 {
                     Values = new ChartValues<double> {1, 1, 1, 4 }
                 },
-            };
+            }; 
             /*double x1 = Convert.ToDouble(TextBox_GetX1.Text);
             double x2 = Convert.ToDouble(TextBox_GetX2.Text);
             double h = (x2 - x1) / 100;
