@@ -29,7 +29,7 @@ namespace Lab_Work_8_Framework
 
         public MainWindow()
         {
-            InitializeComponent(); 
+            InitializeComponent();  
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
