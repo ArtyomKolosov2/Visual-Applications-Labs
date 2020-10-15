@@ -49,7 +49,7 @@ namespace Lab_Work_8_Framework
 
             MyChart.Series = new SeriesCollection 
             {
-                new LineSeries
+                new LineSeries 
                 {
                     Values = new ChartValues<double> {1, 1, 1, 4 }
                 },
