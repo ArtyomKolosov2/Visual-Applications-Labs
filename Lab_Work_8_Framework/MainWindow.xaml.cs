@@ -45,7 +45,7 @@ namespace Lab_Work_8_Framework
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        { 
 
             MyChart.Series = new SeriesCollection 
             {
