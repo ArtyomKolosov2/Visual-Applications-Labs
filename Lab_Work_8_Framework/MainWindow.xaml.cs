@@ -22,7 +22,7 @@ namespace Lab_Work_8_Framework
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window 
-    {
+    { 
         public List<double> Points = new List<double>();
         
         public SeriesCollection SeriesCollection { get; private set; }
