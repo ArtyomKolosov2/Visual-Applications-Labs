@@ -70,6 +70,7 @@
                 MaxWidth="140" 
                 Margin="5" 
                 Content="Start"
+                x:Name="StartBtn"
                 Click="Button_Click"/>
         
         <Label Content="M:" 

@@ -50,7 +50,9 @@ namespace Lab_Work_3
             ResultTextBox.Text+= resultString;
             if (Is_Succes)
             {
+                StartBtn.IsEnabled = false;
                 ResultTextBox.Text += await StartCountAsync(x1, x2, n, m);
+                StartBtn.IsEnabled = true;
             }
         }
 

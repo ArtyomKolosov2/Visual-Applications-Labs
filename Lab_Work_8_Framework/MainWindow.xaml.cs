@@ -22,7 +22,7 @@ namespace Lab_Work_8_Framework
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window 
-    { 
+    {
         public MainWindow()
         {
             InitializeComponent();  
@@ -33,14 +33,21 @@ namespace Lab_Work_8_Framework
             MyChart.Series = new SeriesCollection { new LineSeries { Values = new ChartValues<double> { 1, 1, 1, 1 } } };
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            await StartLogic();
+        }
+
+        private async Task StartLogic()
         {
             double x1 = Convert.ToDouble(TextBox_GetX1.Text);
             double x2 = Convert.ToDouble(TextBox_GetX2.Text);
             double h = Convert.ToDouble(TextBox_GetH.Text);
             MyChart.AxisX.Clear();
-            MyChart.AxisX.Add(new Axis { MaxValue = x2, MinValue = x1 });
-            MyChart.Series = new SeriesCollection { new LineSeries { Values = LiveChartVM.GetPoints(x1, x2, h), Name="Graphic" } };
+            MyChart.AxisX.Add(new Axis { MaxValue = x2, MinValue = x1, Title = "X" });
+            var points = await LiveChartVM.GetPointsAsync(x1, x2, h);
+            var lineChart = new LineSeries { Values = points, Name = "Graphic" };
+            MyChart.Series = new SeriesCollection { lineChart };
         }
 
         private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -55,6 +62,10 @@ namespace Lab_Work_8_Framework
     }
     public static class LiveChartVM
     {
+        public static async Task<ChartValues<double>> GetPointsAsync(double x1, double x2, double h)
+        {
+            return await Task.Run(() => GetPoints(x1, x2, h));
+        }
         public static ChartValues<double> GetPoints(double x1, double x2, double h)
         {
             var result = new ChartValues<double>();
@@ -66,6 +77,10 @@ namespace Lab_Work_8_Framework
             return result;
         }
 
+        private static async Task<double> CalculateOperationAsync(double x, double y, double z)
+        {
+            return await Task.Run(() => CalculateOperation(x, y, z));
+        }
         private static double CalculateOperation(double x, double y, double z)
         {
             return Pow(y, Pow(x, (double)1 / 3)) +
