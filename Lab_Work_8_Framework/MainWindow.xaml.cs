@@ -23,10 +23,6 @@ namespace Lab_Work_8_Framework
     /// </summary>
     public partial class MainWindow : Window 
     { 
-        public List<double> Points = new List<double>();
-        
-        public SeriesCollection SeriesCollection { get; private set; }
-
         public MainWindow()
         {
             InitializeComponent();  
@@ -34,46 +30,40 @@ namespace Lab_Work_8_Framework
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SeriesCollection = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Values = new ChartValues<double> { 3, 5, 7, 4 }
-                },
-            };
-            MyChart.DataContext = this;  
+            MyChart.Series = new SeriesCollection { new LineSeries { Values = new ChartValues<double> { 1, 1, 1, 1 } } };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        { 
-
-            MyChart.Series = new SeriesCollection 
-            {
-                new LineSeries 
-                {
-                    Values = new ChartValues<double> {1, 1, 1, 4 }
-                },
-            }; 
-            /*double x1 = Convert.ToDouble(TextBox_GetX1.Text);
+        {
+            double x1 = Convert.ToDouble(TextBox_GetX1.Text);
             double x2 = Convert.ToDouble(TextBox_GetX2.Text);
-            double h = (x2 - x1) / 100;
-            MyChart.DataContext = LiveChartVM.GetPoints(x1, x2, h);*/
+            double h = Convert.ToDouble(TextBox_GetH.Text);
+            MyChart.AxisX.Clear();
+            MyChart.AxisX.Add(new Axis { MaxValue = x2, MinValue = x1 });
+            MyChart.Series = new SeriesCollection { new LineSeries { Values = LiveChartVM.GetPoints(x1, x2, h), Name="Graphic" } };
         }
-    }
-    public class P
-    {
-        public List<double> Points { get; set; }
+
+        private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ExitCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
     }
     public static class LiveChartVM
     {
-        public static P GetPoints(double x1, double x2, double h)
+        public static ChartValues<double> GetPoints(double x1, double x2, double h)
         {
-            var result = new List<double>();
+            var result = new ChartValues<double>();
             for (;x1 <= x2; x1 += h)
             {
-                result.Add(CalculateOperation(x1, 1, 1));
+                var calculation = CalculateOperation(x1, 1, 1);
+                result.Add(calculation);
             }
-            return new P { Points = result };
+            return result;
         }
 
         private static double CalculateOperation(double x, double y, double z)

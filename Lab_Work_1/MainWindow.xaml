@@ -60,9 +60,9 @@
                 Grid.ColumnSpan="2" 
                 MaxHeight="50" 
                 MaxWidth="150" 
-                Margin="50, 10, 50, 10" x:Name="Execute" >
+                Margin="50, 10, 50, 10" x:Name="Execute" 
+                Click="ExecuteButton_Click">
             Выполнить
         </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="111,0,0,0" Grid.Row="5" VerticalAlignment="Top" Click="Button_Click"/>
     </Grid>
 </Window>

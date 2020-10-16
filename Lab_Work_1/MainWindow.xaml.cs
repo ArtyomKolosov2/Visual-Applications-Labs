@@ -68,10 +68,9 @@ namespace Lab_Work_1
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ResultTextBox.Text += "Лаб. раб. №1 Ст.Гр. 10701219 Колосов А.А\n";
-            GetX_Input.Text = "5";
-            GetY_Input.Text = "76";
-            GetZ_Input.Text = "345";
-            StartExecution();
+            GetX_Input.Text = "-1";
+            GetY_Input.Text = "1";
+            GetZ_Input.Text = "1";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
