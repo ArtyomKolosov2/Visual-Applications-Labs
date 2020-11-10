@@ -47,7 +47,11 @@ namespace Lab_Work_8_Framework
             MyChart.AxisX.Add(new Axis { MaxValue = x2, MinValue = x1, Title = "X" });
             var points = await LiveChartVM.GetPointsAsync(x1, x2, h);
             var lineChart = new LineSeries { Values = points, Name = "Graphic" };
-            MyChart.Series = new SeriesCollection { lineChart };
+            MyChart.Series = new SeriesCollection
+            { 
+                lineChart, 
+                new LineSeries {Values =  new ChartValues<double> { 1, 1, 1, 1 }} 
+            };
         }
 
         private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
