@@ -6,57 +6,59 @@
         xmlns:local="clr-namespace:Lab_Work_9" xmlns:local1="clr-namespace:Lab_Work_9.View"
         mc:Ignorable="d"
         Height="450" Width="600" Loaded="Window_Loaded">
-    <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <local1:FuncGroupBox x:Name="MathFuncGroup" Margin="5" Grid.Column="2" Grid.RowSpan="2"/>
-            <Label Content="X1:" 
+    <TabControl>
+        <TabItem Header="Основное приложение" >
+            <Grid Background="{DynamicResource BackgroundColorBrush}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <local1:FuncGroupBox x:Name="MathFuncGroup" Margin="5" Grid.Column="2" Grid.RowSpan="2"/>
+                    <Label Content="X1:" 
                VerticalAlignment="Center" 
                Grid.Row="0" 
                Grid.Column="0" 
                FontSize="14" 
                FontFamily="Calibri"/>
-            <TextBox x:Name="GetX1_Input" Style="{StaticResource RoundTextBox}" 
+                    <TextBox x:Name="GetX1_Input" Style="{StaticResource RoundTextBox}" 
                  MaxHeight="30"  
                  Margin="25, 0, 10, 0" 
                  Grid.Row="0" 
                  Grid.Column="0" Text="0.1"/>
 
-            <Label  Content="X2:" 
+                    <Label  Content="X2:" 
                 VerticalAlignment="Center" 
                 Grid.Row="1" 
                 Grid.Column="0" 
                 FontFamily="Calibri" 
                 FontSize="14"/>
-            <TextBox x:Name="GetX2_Input" Style="{StaticResource RoundTextBox}" 
+                    <TextBox x:Name="GetX2_Input" Style="{StaticResource RoundTextBox}" 
                  MaxHeight="30"  
                  Margin="25, 0, 10, 0" 
                  Grid.Row="1" 
                  Grid.Column="0" Text="1"/>
 
-            <Label Content="N:" 
+                    <Label Content="N:" 
                VerticalAlignment="Center" 
                Grid.Row="0" Grid.Column="1" 
                FontFamily="Calibri" 
                FontSize="14"/>
-            <TextBox x:Name="GetN_Input" Style="{StaticResource RoundTextBox}" 
+                    <TextBox x:Name="GetN_Input" Style="{StaticResource RoundTextBox}" 
                  MaxHeight="30"  
                  Margin="25, 0, 10, 0" 
                  Grid.Row="0" 
                  Grid.Column="1" Text="10"/>
 
-            <TextBox x:Name="ResultTextBox" Style="{StaticResource RoundTextBox}" 
+                    <TextBox x:Name="ResultTextBox" Style="{StaticResource RoundTextBox}" 
                  Margin="10" 
                  IsReadOnly="True" 
                  Grid.Column="0" 
@@ -64,21 +66,27 @@
                  Grid.RowSpan="2" 
                  Grid.ColumnSpan="3"/>
 
-            <Button Style="{StaticResource RoundCorner}" 
+                <Button Style="{StaticResource RoundCorner}" 
                 Grid.Column="0" 
-                Grid.ColumnSpan="3" 
+                Grid.ColumnSpan="2" 
                 Grid.Row="5" 
                 MaxHeight="40" 
-                MaxWidth="240" 
+                MaxWidth="340" 
                 Margin="5" 
                 Content="Start" Click="Button_Click"
                 />
-            <Label Content="M:" 
+                    <Label Content="M:" 
                VerticalAlignment="Center" 
                Grid.Row="1" Grid.Column="1" 
                FontFamily="Calibri" 
                FontSize="14"/>
-            <TextBox Style="{StaticResource RoundTextBox}" MaxHeight="30" Margin="25, 0, 10, 0" x:Name="GetM_Input" Grid.Column="1" Text="10" Grid.Row="1"/>
-        </Grid>
-    </Grid>
+                    <TextBox Style="{StaticResource RoundTextBox}" MaxHeight="30" Margin="25, 0, 10, 0" x:Name="GetM_Input" Grid.Column="1" Text="10" Grid.Row="1"/>
+                    <Button  Style="{DynamicResource RoundCorner}" Margin="5" Content="Color" x:Name="button"  Grid.Row="4" Grid.Column="2"  Click="button_Click_1" />
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Настройка цвета">
+            <local1:ColorWidget x:Name="MenuColorWidget"/>
+        </TabItem>
+    </TabControl>
 </Window>

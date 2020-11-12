@@ -5,6 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <SolidColorBrush x:Key="BackgroundColorBrush" Color="LightGray" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>

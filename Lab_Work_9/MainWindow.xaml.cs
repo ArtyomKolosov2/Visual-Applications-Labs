@@ -25,6 +25,7 @@ namespace Lab_Work_9
     public partial class MainWindow : Window
     {
         public readonly string TitleText = "Лаб. раб. №9 Ст.Гр. 10701219 Колосов А.А\n";
+        public RGBViewModel viewModel { get; set; } = new RGBViewModel(((SolidColorBrush)Application.Current.Resources["BackgroundColorBrush"]).Color);
         public MainWindow()
         {
             InitializeComponent();
@@ -47,6 +48,14 @@ namespace Lab_Work_9
                 }
             );
             ResultTextBox.Text += TitleText;
+            MenuColorWidget.DataContext = this;
+            MenuColorWidget.OkButton.Click += OkButton_Click;
+        }
+
+        private void OkButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Resources["BackgroundColorBrush"] = new SolidColorBrush(viewModel.CurrentColor);
+            viewModel.StartColor = viewModel.CurrentColor;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -88,5 +97,19 @@ namespace Lab_Work_9
                 ResultTextBox.Text += await MathFunctions.StartCountAsync(x1, x2, n, m, MathFuncGroup.UserChoiceMathFunction);
             }
         }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Color color = ((SolidColorBrush)Application.Current.Resources["BackgroundColorBrush"]).Color;
+            var RGB = new RGBColorWidget(color);
+            if (RGB.ShowDialog() == true)
+            {
+                Application.Current.Resources["BackgroundColorBrush"] = new SolidColorBrush(RGB.ResultColor);
+                viewModel.CurrentColor = ((SolidColorBrush)Application.Current.Resources["BackgroundColorBrush"]).Color;
+                viewModel.StartColor = viewModel.CurrentColor;
+            }
+
+        }
+
     }
 }
