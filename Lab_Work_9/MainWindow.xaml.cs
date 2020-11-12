@@ -50,6 +50,15 @@ namespace Lab_Work_9
             ResultTextBox.Text += TitleText;
             MenuColorWidget.DataContext = this;
             MenuColorWidget.OkButton.Click += OkButton_Click;
+            MenuColorWidget.CancelButton.Click += CancelButton_Click;
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CurrentColor = viewModel.StartColor;
+            viewModel.R = viewModel.StartColor.R;
+            viewModel.G = viewModel.StartColor.G;
+            viewModel.B = viewModel.StartColor.B;
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
