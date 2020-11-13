@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab_Work_10.modules;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -21,11 +22,20 @@ namespace Lab_Work_10
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly IniFileReader _iniFilereader = new IniFileReader("config.ini");
         public MainWindow()
         {
             InitializeComponent();
+            ReadIniFile();
         }
         private ObservableCollection<string> _strings = new ObservableCollection<string>();
+
+        private void ReadIniFile()
+        {
+            Width = Convert.ToInt32(_iniFilereader.ReadINI("settings", "Width")); 
+            Height = Convert.ToInt32(_iniFilereader.ReadINI("settings", "Height"));
+
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             StringComboBox.ItemsSource = _strings;

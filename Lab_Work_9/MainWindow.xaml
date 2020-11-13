@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_Work_9" xmlns:local1="clr-namespace:Lab_Work_9.View"
         mc:Ignorable="d"
-        Height="450" Width="600" Loaded="Window_Loaded">
+        Title="Лаб. раб. №9 Ст.Гр. 10701219 Колосов А.А" Height="450" Width="600" Loaded="Window_Loaded">
     <TabControl>
         <TabItem Header="Основное приложение" >
             <Grid Background="{DynamicResource BackgroundColorBrush}">
