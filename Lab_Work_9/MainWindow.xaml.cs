@@ -109,12 +109,10 @@ namespace Lab_Work_9
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-            Color color = ((SolidColorBrush)Application.Current.Resources["BackgroundColorBrush"]).Color;
-            var RGB = new RGBColorWidget(color);
+            var RGB = new RGBColorWidget(viewModel);
             if (RGB.ShowDialog() == true)
             {
                 Application.Current.Resources["BackgroundColorBrush"] = new SolidColorBrush(RGB.ResultColor);
-                viewModel.CurrentColor = ((SolidColorBrush)Application.Current.Resources["BackgroundColorBrush"]).Color;
                 viewModel.StartColor = viewModel.CurrentColor;
             }
 

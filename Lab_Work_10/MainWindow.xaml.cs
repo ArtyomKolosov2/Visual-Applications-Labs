@@ -14,19 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lab_Work_5
+namespace Lab_Work_10
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<string> _strings = new ObservableCollection<string>();
         public MainWindow()
         {
             InitializeComponent();
         }
-        
+        private ObservableCollection<string> _strings = new ObservableCollection<string>();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             StringComboBox.ItemsSource = _strings;
@@ -62,7 +61,7 @@ namespace Lab_Work_5
 
             ComboBox comboBox = (ComboBox)sender;
             string item = comboBox?.SelectedItem?.ToString();
-            if (item != null) 
+            if (item != null)
             {
                 ResultTextBox.Clear();
                 string[] words = item.Split();
@@ -82,5 +81,5 @@ namespace Lab_Work_5
             };
             StringComboBox.ItemsSource = vs;*/
         }
-    }  
+    }
 }

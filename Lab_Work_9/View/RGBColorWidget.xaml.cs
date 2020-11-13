@@ -10,17 +10,16 @@ namespace Lab_Work_9.View
     public partial class RGBColorWidget : Window
     {
         public RGBViewModel viewModel { get; set; }
-
         public Color ResultColor { get; set; }
         public RGBColorWidget()
         {
             InitializeComponent();
             viewModel = new RGBViewModel();
         }
-        public RGBColorWidget(Color startColor)
+        public RGBColorWidget(RGBViewModel viewModel)
         {
             InitializeComponent();
-            viewModel = new RGBViewModel(startColor);
+            this.viewModel = viewModel;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
