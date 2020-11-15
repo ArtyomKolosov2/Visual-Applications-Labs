@@ -34,7 +34,16 @@ namespace Lab_Work_10
         {
             Width = Convert.ToInt32(_iniFilereader.ReadINI("settings", "Width")); 
             Height = Convert.ToInt32(_iniFilereader.ReadINI("settings", "Height"));
+            AddRange(_iniFilereader.ReadINI("settings", "Height").Split(":"));
+            
 
+        }
+        private void AddRange(IEnumerable<string> collection)
+        {
+            foreach (var item in collection)
+            {
+                _strings.Add(item);
+            }
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
