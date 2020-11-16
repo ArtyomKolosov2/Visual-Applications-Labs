@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_Work_10.modules"
         mc:Ignorable="d"
-        Title="Лаб. раб. №10 Ст.Гр. 10701219 Колосов А.А" Loaded="Window_Loaded" Style="{DynamicResource MainFontStyle}">
+        Loaded="Window_Loaded" Style="{DynamicResource MainFontStyle}">
     <Window.CommandBindings>
         <CommandBinding Command="local:CustomCommands.Save" CanExecute="SaveCommand_CanExecute" Executed="SaveCommand_Executed"/>
         <CommandBinding Command="local:CustomCommands.Exit" CanExecute="ExitCommand_CanExecute" Executed="ExitCommand_Executed"/>

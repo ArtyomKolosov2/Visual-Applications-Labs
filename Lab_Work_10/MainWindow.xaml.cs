@@ -36,7 +36,8 @@ namespace Lab_Work_10
             Height = Convert.ToInt32(_iniFilereader.ReadINI("settings", "Height"));
             AddRange(_iniFilereader.ReadINI("settings", "StandartText").Split(":"));
             AddButton.Content = _iniFilereader.ReadINI("settings","AddButtonText");
-            CloseBtnTextBlock.Text= _iniFilereader.ReadINI("settings","CloseButtonTextBlock");
+            CloseBtnTextBlock.Text = _iniFilereader.ReadINI("settings","CloseButtonTextBlock");
+            Title = _iniFilereader.ReadINI("settings","WindowTitle").ToString();
             
 
         }
