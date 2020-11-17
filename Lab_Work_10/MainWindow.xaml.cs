@@ -26,7 +26,6 @@ namespace Lab_Work_10
         public MainWindow()
         {
             InitializeComponent();
-            ReadIniFile();
         }
         private ObservableCollection<string> _strings = new ObservableCollection<string>();
 
@@ -50,6 +49,7 @@ namespace Lab_Work_10
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            ReadIniFile();
             StringComboBox.ItemsSource = _strings;
         }
 
