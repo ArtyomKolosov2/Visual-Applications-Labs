@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab_Work_11.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,24 @@ namespace Lab_Work_11
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var FormOne = new Window1();
+            FormOne.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var FormTwo = new Window2();
+            FormTwo.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var FormThree = new Window3();
+            FormThree.Show();
         }
     }
 }
