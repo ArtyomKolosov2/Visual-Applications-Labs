@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_Work_11.Views"
         mc:Ignorable="d"
-        Title="Window2" Height="500" Width="800" Loaded="Window_Loaded">
+        Title="Paint Form" Height="500" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
