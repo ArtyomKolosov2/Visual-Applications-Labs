@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,20 @@ namespace Lab_Work_11.Views
         public Window1()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Uri fileUri = new Uri(openFileDialog.FileName);
+                var newImageSource = new BitmapImage(fileUri);
+                Img1.Source = newImageSource;
+                Img2.Source = newImageSource;
+                Img3.Source = newImageSource;
+                Img4.Source = newImageSource;
+            }
         }
     }
 }

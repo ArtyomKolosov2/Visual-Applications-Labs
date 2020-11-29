@@ -21,13 +21,13 @@
         </Border>
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
             <TextBlock x:Name="SizeText" Text="Size:" FontSize="25"/>
-            <Slider Orientation="Horizontal" Minimum="1" Margin="5" Maximum="82" ValueChanged="Slider_ValueChanged"/>
+            <Slider Orientation="Horizontal" Minimum="1" Margin="5" Height="40" Maximum="82" ValueChanged="Slider_ValueChanged"/>
             
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
             <Button Style="{DynamicResource RoundCorner}" Margin="4" Height="30" Content="Изменить цвет"  Click="Button_Click"/>
             <Button Style="{DynamicResource RoundCorner}" Margin="3" Height="30" Content="Сохранить" Click="Button_Click_1" />
-            <Button Style="{DynamicResource RoundCorner}" Margin="3" Height="30" Content="Отчистить" Click="Button_Click_2" />
+            <Button Style="{DynamicResource RoundCorner}" Margin="3" Height="30" Content="Очистить" Click="Button_Click_2" />
         </StackPanel>
     </Grid>
 </Window>
