@@ -11,6 +11,7 @@ namespace Lab_Work_11.Enum
         Ellipse,
         Line,
         Rectangle,
-        Sector
+        Sector,
+        Arc
     }
 }

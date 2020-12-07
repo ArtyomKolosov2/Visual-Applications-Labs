@@ -92,7 +92,14 @@ namespace Lab_Work_11.ViewModels
             get => _endSector;
             set
             {
-                _endSector = Math.Abs(value) % 360;
+                if (value > 360)
+                {
+                    _endSector = Math.Abs(value) % 360;
+                }
+                else
+                {
+                    _endSector = Math.Abs(value);
+                }
                 OnPropertyChanged();
             }
         }

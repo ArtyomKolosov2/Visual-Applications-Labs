@@ -61,9 +61,29 @@ namespace Lab_Work_11.Views
             TextBox_InputY2.IsReadOnly = true;
         }
 
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            PaintViewModel.Geometry = GeometryEnum.Arc;
+            GeometryChoiceLabel.Content = "Выбрано: Ark";
+            TextBox_InputX2.IsReadOnly = false;
+            TextBox_InputY2.IsReadOnly = false;
+        }
+
         private Shape GetShape()
         {
+
             int height = PaintViewModel.Height;
+            string dataString;
+            if (PaintViewModel.EndSector > 180) 
+            {
+                dataString = $"M0,0 L0,-{height} A{height},{height} 0 0 1 {height * Math.Sin(180 * (Math.PI / 180d))}, {-height * Math.Cos(180 * (Math.PI / 180d))}";
+                dataString += $" A{height},{height} 0 0 1 {height * Math.Sin(PaintViewModel.EndSector * (Math.PI / 180d))}, {-height * Math.Cos(PaintViewModel.EndSector * (Math.PI / 180d))} z";
+            }
+            else 
+            {
+                dataString = $"M0,0 L0,-{height} A{height},{height} 0 0 {(PaintViewModel.EndSector > 180 ? 0 : 1)} {height * Math.Sin(PaintViewModel.EndSector * (Math.PI / 180d))}, {-height * Math.Cos(PaintViewModel.EndSector * (Math.PI / 180d))} z";
+            }
+            
             return PaintViewModel.Geometry switch
             {
                 GeometryEnum.Line => new Line 
@@ -82,8 +102,14 @@ namespace Lab_Work_11.Views
                 },
                 GeometryEnum.Sector => new Path 
                 {
-                    Data=Geometry.Parse($"M0,0 L0,-{height} A{height},{height} 0 0 {(PaintViewModel.EndSector > 180 ? 0 : 1)} {height * Math.Sin(PaintViewModel.EndSector * (Math.PI / 180d))}, {-height * Math.Cos(PaintViewModel.EndSector * (Math.PI / 180d))} z"), 
+                    
+                    Data=Geometry.Parse(dataString), 
                     RenderTransform = new TranslateTransform() { X = PaintViewModel.X1, Y = PaintViewModel.Y1 } 
+                },
+                GeometryEnum.Arc => new Path
+                {
+                    Data = Geometry.Parse($"M0,0 A100,100 0 0 1 {PaintViewModel.X2},{PaintViewModel.Y2} "),
+                    RenderTransform = new TranslateTransform() { X = PaintViewModel.X1, Y = PaintViewModel.Y1 }
                 },
                 GeometryEnum.Rectangle => new Rectangle
                 {
